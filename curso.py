@@ -11,3 +11,7 @@ class Curso:
     descricao: str
     nivel: str
     aulas: List[Aula] = field(default_factory=list)
+
+    @property
+    def duracao_minutos(self) -> int:
+        return sum(aula.duracao_minutos for aula in self.aulas)

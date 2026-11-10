@@ -53,7 +53,7 @@ class TelaInicio(QWidget):
         cartao_layout.addWidget(rotulo)
         cartao_layout.addWidget(self.rotulo_progresso)
         cartao_layout.addWidget(self.barra)
-        cartao_layout.addWidget(botao, alignment=0)
+        cartao_layout.addWidget(botao)
 
         layout.addWidget(cartao)
 
@@ -61,16 +61,16 @@ class TelaInicio(QWidget):
         linha.setSpacing(16)
 
         linha.addWidget(self._criar_cartao_resumo(
-            "Cursos disponíveis",
+            "Módulos",
             str(len(self.servico_cursos.listar_cursos())),
-            "Conteúdo organizado por tema"
+            "Formação dividida por assunto"
         ))
 
         total_aulas = sum(len(curso.aulas) for curso in self.servico_cursos.listar_cursos())
         linha.addWidget(self._criar_cartao_resumo(
-            "Aulas disponíveis",
-            str(total_aulas),
-            "Aprendizado em pequenas etapas"
+            "Duração completa",
+            f"{self.servico_cursos.duracao_total_minutos()} min",
+            "Aproximadamente 1 hora de formação"
         ))
 
         linha.addWidget(self._criar_cartao_resumo(

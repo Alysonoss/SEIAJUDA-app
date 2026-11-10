@@ -1,6 +1,6 @@
 # SEI Guia - Etapa 1 em Python
 
-Aplicativo desktop de treinamento para ensinar o uso e a lógica do SEI.
+Aplicativo desktop de treinamento para ensinar a lógica de uso do SEI.
 
 ## Tecnologias
 
@@ -8,86 +8,47 @@ Aplicativo desktop de treinamento para ensinar o uso e a lógica do SEI.
 - PySide6
 - SQLite
 
+## Etapa atual
+
+A área **Cursos** foi reorganizada como uma formação básica completa de aproximadamente **60 minutos**, separada em 6 módulos:
+
+1. Fundamentos do SEI — 10 min
+2. Usuários, unidades e organização do trabalho — 10 min
+3. Processos no SEI — 12 min
+4. Documentos no SEI — 12 min
+5. Tramitação e fluxo administrativo — 10 min
+6. Segurança e boas práticas — 6 min
+
+**Total: 60 minutos**
+
+O tempo é estimado para leitura atenta, reflexão sobre exemplos e revisão dos conceitos.
+
 ## O que já funciona
 
 - Menu lateral
 - Tela inicial
 - Área de cursos
-- 3 cursos iniciais
-- 11 aulas
-- Progresso por curso
+- 6 módulos
+- 17 aulas
+- Duração por aula e por módulo
+- Formação total de 60 minutos
+- Progresso por módulo
 - Marcar/desmarcar aula como concluída
 - Salvamento automático em SQLite
-- Navegação para próxima aula
-- Telas reservadas para futuras etapas
-
-## Estrutura
-
-```text
-SEIGuia_Python_Etapa1/
-├── main.py
-├── janela_principal.py
-├── requirements.txt
-├── executar.bat
-├── modelos/
-│   ├── aula.py
-│   ├── curso.py
-│   └── progresso.py
-├── servicos/
-│   ├── servico_banco.py
-│   ├── servico_cursos.py
-│   └── servico_progresso.py
-├── telas/
-│   ├── tela_inicio.py
-│   ├── tela_cursos.py
-│   └── tela_em_desenvolvimento.py
-└── dados/
-    └── sei_guia.db  (criado automaticamente)
-```
+- Navegação entre aulas
+- Telas reservadas para próximas etapas
 
 ## Como executar
 
-### 1. Instale o Python
-Recomendado: Python 3.11 ou superior.
-
-### 2. Abra um terminal na pasta do projeto
-
-### 3. Crie um ambiente virtual
-
-```bash
-python -m venv .venv
-```
-
-No Windows:
-
-```bash
-.venv\Scripts\activate
-```
-
-### 4. Instale as dependências
-
 ```bash
 pip install -r requirements.txt
-```
-
-### 5. Execute
-
-```bash
 python main.py
 ```
 
-Ou dê dois cliques em `executar.bat` depois de instalar o PySide6.
+No Windows também é possível executar `executar.bat`.
 
-## Banco de dados
+## Observação sobre o conteúdo
 
-O SQLite é criado automaticamente em:
+O material atual ensina a lógica e os conceitos fundamentais do SEI.
 
-```text
-dados/sei_guia.db
-```
-
-O progresso das aulas fica salvo nesse arquivo.
-
-## Próxima etapa sugerida
-
-Construir o simulador visual do SEI usando a mesma base do projeto.
+Para produzir aulas visuais com caminhos exatos de menus, botões e telas do SEI real, será necessário utilizar um manual de usuário ou capturas de tela da versão utilizada pela instituição.
