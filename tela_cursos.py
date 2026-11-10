@@ -123,7 +123,7 @@ class TelaCursos(QWidget):
         self.lista_cursos.clear()
         for curso in self.cursos:
             concluido = self.servico_progresso.quantidade_concluida(curso.id)
-            texto = f"{curso.titulo}\n{concluido}/{len(curso.aulas)} aulas"
+            texto = f"{curso.titulo}\n{concluido}/{len(curso.aulas)} aulas • {curso.duracao_minutos} min"
             item = QListWidgetItem(texto)
             item.setData(Qt.UserRole, curso.id)
             self.lista_cursos.addItem(item)
@@ -140,7 +140,7 @@ class TelaCursos(QWidget):
 
         self.titulo_curso.setText(self.curso_atual.titulo)
         self.descricao_curso.setText(
-            f"{self.curso_atual.nivel} • {self.curso_atual.descricao}"
+            f"{self.curso_atual.nivel} • {self.curso_atual.duracao_minutos} min • {self.curso_atual.descricao}"
         )
 
         self._carregar_aulas()
@@ -158,7 +158,7 @@ class TelaCursos(QWidget):
             )
             marcador = "✓" if concluida else "○"
             item = QListWidgetItem(
-                f"{marcador} {aula.ordem}. {aula.titulo}"
+                f"{marcador} {aula.ordem}. {aula.titulo}  •  {aula.duracao_minutos} min"
             )
             item.setData(Qt.UserRole, aula.id)
             self.lista_aulas.addItem(item)
@@ -253,7 +253,7 @@ class TelaCursos(QWidget):
         )
         item_curso = self.lista_cursos.item(indice_curso)
         item_curso.setText(
-            f"{self.curso_atual.titulo}\n{concluido}/{len(self.curso_atual.aulas)} aulas"
+            f"{self.curso_atual.titulo}\n{concluido}/{len(self.curso_atual.aulas)} aulas • {self.curso_atual.duracao_minutos} min"
         )
 
         if self.ao_alterar_progresso:
