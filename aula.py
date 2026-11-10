@@ -8,3 +8,4 @@ class Aula:
     resumo: str
     conteudo: str
     ordem: int
+    duracao_minutos: int
