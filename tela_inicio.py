@@ -53,7 +53,7 @@ class TelaInicio(QWidget):
         cartao_layout.addWidget(rotulo)
         cartao_layout.addWidget(self.rotulo_progresso)
         cartao_layout.addWidget(self.barra)
-        cartao_layout.addWidget(botao, alignment=0)
+        cartao_layout.addWidget(botao)
 
         layout.addWidget(cartao)
 
