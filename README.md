@@ -1,6 +1,6 @@
 # SEI Guia - Etapa 1 em Python
 
-Aplicativo desktop de treinamento para ensinar a lógica de uso do SEI.
+Aplicativo desktop de treinamento para ensinar a lógica de funcionamento do SEI.
 
 ## Tecnologias
 
@@ -8,35 +8,43 @@ Aplicativo desktop de treinamento para ensinar a lógica de uso do SEI.
 - PySide6
 - SQLite
 
-## Etapa atual
+## Formação atual: 60 minutos
 
-A área **Cursos** foi reorganizada como uma formação básica completa de aproximadamente **60 minutos**, separada em 6 módulos:
+O conteúdo foi ampliado utilizando como base o manual técnico de Web Services do SEI enviado no projeto.
 
-1. Fundamentos do SEI — 10 min
-2. Usuários, unidades e organização do trabalho — 10 min
-3. Processos no SEI — 12 min
-4. Documentos no SEI — 12 min
-5. Tramitação e fluxo administrativo — 10 min
-6. Segurança e boas práticas — 6 min
+A formação está dividida em 6 módulos, 18 aulas e 60 minutos:
 
-**Total: 60 minutos**
+1. Estrutura do processo no SEI — 10 min
+2. Criando processos: gerarProcedimento — 10 min
+3. Documentos: incluirDocumento e consultarDocumento — 10 min
+4. Tramitação: enviarProcesso — 10 min
+5. Consulta e acompanhamento — 10 min
+6. Conclusão, reabertura e revisão — 10 min
 
-O tempo é estimado para leitura atenta, reflexão sobre exemplos e revisão dos conceitos.
+## Operações do SEI abordadas
 
-## O que já funciona
+- gerarProcedimento
+- incluirDocumento
+- consultarDocumento
+- enviarProcesso
+- atribuirProcesso
+- anexarProcesso
+- consultarProcedimento
+- listarAndamentos
+- lancarAndamento
+- concluirProcesso
+- reabrirProcesso
+- listarUnidades
+- listarUsuarios
+- listarTiposProcedimento
 
-- Menu lateral
-- Tela inicial
-- Área de cursos
-- 6 módulos
-- 17 aulas
-- Duração por aula e por módulo
-- Formação total de 60 minutos
-- Progresso por módulo
-- Marcar/desmarcar aula como concluída
-- Salvamento automático em SQLite
-- Navegação entre aulas
-- Telas reservadas para próximas etapas
+## Observação importante
+
+O PDF de referência é um manual técnico de Web Services e não um manual visual da interface do usuário.
+
+Por isso o curso usa os nomes reais das operações e estruturas documentadas pelo SEI, explica os campos e mostra o fluxo que cada operação representa, mas não inventa nomes de botões ou caminhos de menu que não aparecem no documento.
+
+Quando houver um manual visual ou capturas de tela do SEI usado pela instituição, as aulas poderão ser complementadas com instruções clique a clique.
 
 ## Como executar
 
@@ -45,10 +53,4 @@ pip install -r requirements.txt
 python main.py
 ```
 
-No Windows também é possível executar `executar.bat`.
-
-## Observação sobre o conteúdo
-
-O material atual ensina a lógica e os conceitos fundamentais do SEI.
-
-Para produzir aulas visuais com caminhos exatos de menus, botões e telas do SEI real, será necessário utilizar um manual de usuário ou capturas de tela da versão utilizada pela instituição.
+Ou utilize `executar.bat` no Windows.
