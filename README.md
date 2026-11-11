@@ -1,6 +1,6 @@
-# SEI Guia - Etapa 1 em Python
+# SEI Guia - Aplicativo de treinamento
 
-Aplicativo desktop de treinamento para ensinar a lógica de funcionamento do SEI.
+Aplicativo desktop em Python para capacitação de usuários do SEI.
 
 ## Tecnologias
 
@@ -8,43 +8,69 @@ Aplicativo desktop de treinamento para ensinar a lógica de funcionamento do SEI
 - PySide6
 - SQLite
 
-## Formação atual: 60 minutos
+## Conteúdo atual
 
-O conteúdo foi ampliado utilizando como base o manual técnico de Web Services do SEI enviado no projeto.
+A área Cursos foi ampliada para 10 módulos com 31 aulas, cobrindo conceitos e funções do SEI:
 
-A formação está dividida em 6 módulos, 18 aulas e 60 minutos:
+1. Fundamentos e estrutura do SEI
+2. Criação de processos
+3. Documentos no processo
+4. Arquivos e documentos externos
+5. Tramitação e responsabilidade
+6. Consulta, histórico e anotações
+7. Organização e controle
+8. Blocos
+9. Segurança e restrições
+10. Finalização e funções complementares
 
-1. Estrutura do processo no SEI — 10 min
-2. Criando processos: gerarProcedimento — 10 min
-3. Documentos: incluirDocumento e consultarDocumento — 10 min
-4. Tramitação: enviarProcesso — 10 min
-5. Consulta e acompanhamento — 10 min
-6. Conclusão, reabertura e revisão — 10 min
+## Funções estudadas
 
-## Operações do SEI abordadas
+Entre as funções apresentadas estão:
 
 - gerarProcedimento
+- listarTiposProcedimento
+- listarUnidades
+- listarUsuarios
 - incluirDocumento
 - consultarDocumento
+- listarSeries
+- adicionarArquivo
+- adicionarConteudoArquivo
 - enviarProcesso
 - atribuirProcesso
-- anexarProcesso
 - consultarProcedimento
 - listarAndamentos
 - lancarAndamento
+- registrarAnotacao
+- definirMarcador
+- listarMarcadoresUnidade
+- definirControlePrazo
+- anexarProcesso
+- desanexarProcesso
+- gerarBloco
+- incluirDocumentoBloco
+- incluirProcessoBloco
+- disponibilizarBloco
+- devolverBloco
+- concluirBloco
+- reabrirBloco
+- bloquearProcesso
+- desbloquearProcesso
 - concluirProcesso
 - reabrirProcesso
-- listarUnidades
-- listarUsuarios
-- listarTiposProcedimento
+- enviarEmail
+- agendarPublicacao
+- alterarPublicacao
+- cancelarAgendamentoPublicacao
 
-## Observação importante
+## Ajuda
 
-O PDF de referência é um manual técnico de Web Services e não um manual visual da interface do usuário.
+A aba Ajuda contém orientações simples sobre:
 
-Por isso o curso usa os nomes reais das operações e estruturas documentadas pelo SEI, explica os campos e mostra o fluxo que cada operação representa, mas não inventa nomes de botões ou caminhos de menu que não aparecem no documento.
-
-Quando houver um manual visual ou capturas de tela do SEI usado pela instituição, as aulas poderão ser complementadas com instruções clique a clique.
+- como iniciar um curso;
+- como acompanhar o progresso;
+- o que fazer quando houver dúvida;
+- a diferença entre o ambiente de aprendizagem e o SEI institucional.
 
 ## Como executar
 
@@ -53,4 +79,4 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Ou utilize `executar.bat` no Windows.
+No Windows, também é possível utilizar `executar.bat`.
