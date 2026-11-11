@@ -4,932 +4,302 @@ from modelos.curso import Curso
 
 class ServicoCursos:
     def listar_cursos(self):
-        """
-        Formação básica de 60 minutos.
-
-        IMPORTANTE:
-        O conteúdo utiliza a terminologia do manual técnico de Web Services do SEI.
-        Por isso aparecem nomes como gerarProcedimento, incluirDocumento,
-        enviarProcesso e consultarProcedimento.
-
-        O PDF utilizado como referência não é um manual visual da interface do usuário.
-        Ele documenta as estruturas e operações do SEI. Assim, o curso explica o que
-        cada operação representa no fluxo real do sistema sem inventar nomes de botões
-        que não constam no documento.
-        """
-
         return [
             Curso(
                 id=1,
-                titulo="1. Estrutura do processo no SEI",
-                descricao="Aprenda a linguagem usada pelo próprio SEI: procedimento, protocolo, documento, unidade e andamento.",
-                nivel="Fundamentos",
+                titulo='1. Fundamentos e estrutura do SEI',
+                descricao='Conheça os elementos que formam processos, tipos, unidades e usuários.',
+                nivel='Fundamentos',
                 aulas=[
                     Aula(
                         id=1,
-                        titulo="Procedimento: como o SEI representa um processo",
-                        resumo="Entenda os campos que formam um processo no SEI e como eles aparecem no manual.",
+                        titulo='Procedimento: o processo dentro do SEI',
+                        resumo='Entenda como o SEI representa um processo e quais informações fazem parte dele.',
                         ordem=1,
-                        duracao_minutos=3,
-                        conteudo="""
-<h2>Procedimento: como o SEI representa um processo</h2>
-
-<div class="destaque">
-<b>Nome usado no manual:</b> <code>Procedimento</code><br>
-<b>O que representa para o usuário:</b> o processo administrativo que será criado, consultado, enviado e concluído.
-</div>
-
-<p>No manual de integração do SEI, a estrutura utilizada para representar um processo é chamada de <b>Procedimento</b>. É importante aprender esse nome porque várias operações do sistema trabalham diretamente com essa estrutura, como <code>gerarProcedimento</code> e <code>consultarProcedimento</code>.</p>
-
-<h3>Quais informações formam um Procedimento?</h3>
-
-<p>Entre os principais campos documentados estão:</p>
-
-<ul>
-    <li><b>IdTipoProcedimento:</b> identifica o tipo de processo cadastrado no SEI.</li>
-    <li><b>NumeroProtocolo:</b> número do processo. Se ele não for informado durante a geração, o próprio SEI pode gerar um número automaticamente.</li>
-    <li><b>DataAutuacao:</b> data em que o processo é autuado. Se não for informada, o sistema utiliza a data atual.</li>
-    <li><b>Especificacao:</b> descrição ou especificação utilizada para caracterizar o processo.</li>
-    <li><b>IdTipoPrioridade:</b> permite associar um tipo de prioridade.</li>
-    <li><b>Assuntos:</b> conjunto de assuntos usados para classificação do processo.</li>
-    <li><b>Interessados:</b> pessoas ou entidades relacionadas ao processo.</li>
-    <li><b>Observacao:</b> observação registrada pela unidade.</li>
-    <li><b>NivelAcesso:</b> define se o processo é público, restrito ou sigiloso.</li>
-    <li><b>IdHipoteseLegal:</b> identifica a hipótese legal quando aplicável.</li>
-</ul>
-
-<h3>O que isso significa no trabalho diário?</h3>
-
-<p>Quando um servidor inicia um novo processo, ele não está simplesmente criando uma pasta vazia. O sistema precisa saber <b>que tipo de processo é aquele, qual é sua finalidade, quem está relacionado a ele e qual nível de acesso deve ser aplicado</b>.</p>
-
-<p>É justamente essa organização que permite que o processo seja localizado, tramitado e acompanhado posteriormente.</p>
-
-<h3>Exemplo de raciocínio</h3>
-
-<p>Imagine que a unidade precise iniciar um processo de aquisição. Antes de criá-lo, o servidor deve identificar o tipo adequado, conferir o assunto, definir a especificação e verificar se existem interessados. Depois disso, o SEI gera ou associa o número de protocolo que passará a identificar aquele processo.</p>
-
-<div class="destaque">
-<b>Memorize:</b> no manual técnico, “Procedimento” = processo. O número visível para o usuário aparece como <b>ProtocoloProcedimento</b> ou <b>ProcedimentoFormatado</b>, dependendo da operação.
-</div>
-"""
+                        conteudo='<h2>Procedimento: o processo dentro do SEI</h2>\n<p>No SEI, o processo é representado pela estrutura chamada <b>Procedimento</b>. Ela reúne as informações necessárias para identificar, classificar e acompanhar um processo administrativo.</p>\n<h3>Campos principais</h3>\n<ul>\n<li><b>IdTipoProcedimento:</b> identifica o tipo de processo cadastrado.</li>\n<li><b>NumeroProtocolo:</b> número do processo. Quando não é informado em uma geração, o SEI pode criar um novo número.</li>\n<li><b>DataAutuacao:</b> data em que o processo é autuado.</li>\n<li><b>Especificacao:</b> texto que ajuda a identificar o assunto concreto daquele processo.</li>\n<li><b>IdTipoPrioridade:</b> identifica uma prioridade configurada.</li>\n<li><b>Assuntos:</b> classificação temática do processo.</li>\n<li><b>Interessados:</b> pessoas ou entidades relacionadas ao processo.</li>\n<li><b>Observacao:</b> observação registrada pela unidade.</li>\n<li><b>NivelAcesso:</b> público, restrito ou sigiloso.</li>\n<li><b>IdHipoteseLegal:</b> hipótese legal associada quando aplicável.</li>\n</ul>\n<h3>Como interpretar na prática</h3>\n<p>Ao iniciar um processo, o usuário precisa pensar primeiro no assunto e no tipo correto. A escolha do tipo influencia quais assuntos, níveis de acesso e operações estarão disponíveis.</p>\n<p>Depois da criação, o número do processo passa a ser a referência principal para consultas, tramitações, inclusão de documentos e acompanhamento do histórico.</p>\n<h3>Exemplo de raciocínio</h3>\n<p>Se uma unidade precisa tratar uma solicitação administrativa, ela deve identificar o tipo de processo adequado, preencher uma especificação clara, indicar interessados quando necessário e conferir o nível de acesso antes de concluir a criação.</p>\n<div class="destaque"><b>Importante:</b> Um processo bem criado reduz retrabalho nas etapas seguintes.</div>'
                     ),
                     Aula(
                         id=2,
-                        titulo="Protocolo, tipo de processo e nível de acesso",
-                        resumo="Aprenda a identificar corretamente o processo e a diferença entre público, restrito e sigiloso.",
+                        titulo='Protocolo, identificação e tipo de processo',
+                        resumo='Aprenda a diferenciar número do processo, identificador interno e tipo de procedimento.',
                         ordem=2,
-                        duracao_minutos=3,
-                        conteudo="""
-<h2>Protocolo, tipo de processo e nível de acesso</h2>
-
-<p>Depois que um processo existe no SEI, ele precisa ser identificado de maneira inequívoca. O manual utiliza o campo <b>ProtocoloProcedimento</b> para representar o número visível do processo, com exemplo no formato <code>12.1.000000077-4</code>.</p>
-
-<h3>Tipo de processo</h3>
-
-<p>O campo <b>IdTipoProcedimento</b> representa o tipo de processo cadastrado no SEI. Esse identificador não deve ser tratado como um número qualquer. Ele corresponde a um tipo previamente configurado no sistema.</p>
-
-<p>O manual também documenta a operação <code>listarTiposProcedimento</code>. Ela retorna os tipos de processo permitidos de acordo com o acesso configurado para o serviço. Isso demonstra um princípio importante: <b>o sistema deve trabalhar com tipos efetivamente cadastrados e autorizados</b>.</p>
-
-<h3>Nível de acesso</h3>
-
-<p>A estrutura de Procedimento utiliza os seguintes valores:</p>
-
-<ul>
-    <li><b>0 - público:</b> processo sem restrição específica de acesso.</li>
-    <li><b>1 - restrito:</b> processo sujeito a restrição de acesso.</li>
-    <li><b>2 - sigiloso:</b> processo com tratamento sigiloso.</li>
-    <li><b>nulo:</b> o processo pode assumir o nível e a hipótese legal sugeridos pelo tipo de processo cadastrado no SEI.</li>
-</ul>
-
-<h3>Por que isso é importante?</h3>
-
-<p>O nível de acesso não deve ser escolhido por conveniência. Ele faz parte da configuração e das regras de tratamento daquele processo. Quando o nível exige hipótese legal, o campo <b>IdHipoteseLegal</b> identifica essa relação.</p>
-
-<h3>Antes de trabalhar com um processo</h3>
-
-<ol>
-    <li>Confirme o número do protocolo.</li>
-    <li>Confirme o tipo do processo.</li>
-    <li>Leia a especificação.</li>
-    <li>Verifique o nível de acesso.</li>
-    <li>Confira em qual unidade o processo está aberto.</li>
-</ol>
-
-<div class="destaque">
-O curso utiliza os nomes documentados pelo SEI. Eles ajudam a entender o que existe por trás da interface e evitam tratar “processo” como uma caixa preta.
-</div>
-"""
+                        conteudo='<h2>Protocolo, identificação e tipo de processo</h2>\n<p>O SEI usa diferentes identificadores. Para quem opera o sistema, o mais importante é compreender que o número visível do processo não é a mesma coisa que seus identificadores internos.</p>\n<h3>ProtocoloProcedimento</h3>\n<p><b>ProtocoloProcedimento</b> representa o número visível do processo, usado em diversas operações como consulta, envio, conclusão, reabertura, anotação e inclusão em bloco.</p>\n<h3>IdProcedimento</h3>\n<p><b>IdProcedimento</b> é o identificador interno do processo. Algumas operações aceitam o identificador interno; outras utilizam diretamente o número de protocolo.</p>\n<h3>IdTipoProcedimento</h3>\n<p><b>IdTipoProcedimento</b> indica qual tipo de processo está sendo tratado. O tipo não é apenas um título: ele faz parte da configuração do SEI e pode determinar assuntos, permissões e regras de uso.</p>\n<h3>Tipos disponíveis</h3>\n<p>A função <code>listarTiposProcedimento</code> permite obter os tipos de processo autorizados para determinado contexto. Ela também pode aplicar filtros por unidade, série de documento e processo individual.</p>\n<div class="destaque"><b>Importante:</b> Antes de criar ou operar um processo, confirme se o tipo selecionado corresponde ao procedimento administrativo que será executado.</div>'
                     ),
                     Aula(
                         id=3,
-                        titulo="Unidades, usuários e permissões",
-                        resumo="Entenda como o SEI relaciona unidades, usuários e acesso às operações.",
+                        titulo='Unidades e usuários',
+                        resumo='Veja como o SEI relaciona setores, usuários e permissões de trabalho.',
                         ordem=3,
-                        duracao_minutos=4,
-                        conteudo="""
-<h2>Unidades, usuários e permissões</h2>
-
-<p>Grande parte das operações do SEI exige um <b>IdUnidade</b>. Isso acontece porque o sistema precisa saber em qual unidade a ação está sendo realizada.</p>
-
-<h3>Operação documentada: listarUnidades</h3>
-
-<p>A operação <code>listarUnidades</code> retorna as unidades permitidas para o serviço informado. O manual deixa claro que essa lista respeita as permissões configuradas no SEI.</p>
-
-<p>Por exemplo, se determinado serviço estiver autorizado a gerar processos apenas nas unidades X, Y e Z, são essas unidades que estarão disponíveis para aquela integração.</p>
-
-<h3>Operação documentada: listarUsuarios</h3>
-
-<p>A operação <code>listarUsuarios</code> utiliza a unidade como referência e retorna usuários que possuem o perfil Básico do SEI naquela unidade.</p>
-
-<h3>O que o usuário deve aprender com isso?</h3>
-
-<p>Mesmo quando trabalha pela interface normal do SEI, o servidor precisa ter consciência de que:</p>
-
-<ul>
-    <li>ações são executadas em um contexto de unidade;</li>
-    <li>nem toda unidade possui as mesmas permissões;</li>
-    <li>nem todo usuário pode realizar todas as operações;</li>
-    <li>processos podem estar abertos em uma ou mais unidades;</li>
-    <li>a escolha da unidade de destino interfere diretamente na tramitação.</li>
-</ul>
-
-<h3>Checklist rápido</h3>
-
-<p>Antes de iniciar uma tarefa, confirme:</p>
-
-<ol>
-    <li>Estou na unidade correta?</li>
-    <li>Esse processo está disponível para minha unidade?</li>
-    <li>Tenho permissão para a ação necessária?</li>
-    <li>A próxima etapa será executada por esta unidade ou por outra?</li>
-</ol>
-
-<div class="destaque">
-<b>Regra de segurança operacional:</b> unidade errada + processo correto ainda pode resultar em uma ação errada.
-</div>
-"""
-                    ),
+                        conteudo='<h2>Unidades e usuários</h2>\n<p>As operações do SEI frequentemente exigem um <b>IdUnidade</b>. Isso acontece porque uma ação não é executada apenas por uma pessoa, mas dentro do contexto de uma unidade administrativa.</p>\n<h3>listarUnidades</h3>\n<p><code>listarUnidades</code> retorna as unidades disponíveis de acordo com o acesso configurado. Também pode receber filtros relacionados ao tipo de processo ou ao tipo de documento.</p>\n<h3>listarUsuarios</h3>\n<p><code>listarUsuarios</code> retorna usuários vinculados à unidade e permite filtrar um usuário específico. O conjunto retornado considera usuários com perfil Básico na unidade.</p>\n<h3>Por que conferir a unidade</h3>\n<ul>\n<li>um processo pode estar aberto em uma unidade e não em outra;</li>\n<li>as permissões podem variar entre unidades;</li>\n<li>a unidade de origem interfere na tramitação;</li>\n<li>atribuições são realizadas dentro de um contexto de unidade.</li>\n</ul>\n<h3>Rotina recomendada</h3>\n<ol>\n<li>confirme a unidade atual;</li>\n<li>confirme o processo;</li>\n<li>confirme se a unidade possui responsabilidade naquela etapa;</li>\n<li>só então execute a operação necessária.</li>\n</ol>\n<div class="destaque"><b>Importante:</b> Trabalhar no processo correto dentro da unidade errada ainda pode gerar um erro administrativo.</div>'
+                    )
                 ]
             ),
-
             Curso(
                 id=2,
-                titulo="2. Criando processos: gerarProcedimento",
-                descricao="Veja como o SEI estrutura a criação de um processo e quais dados entram nessa operação.",
-                nivel="Operações",
+                titulo='2. Criação de processos',
+                descricao='Aprenda a gerar processos e preencher corretamente os dados iniciais.',
+                nivel='Operações',
                 aulas=[
                     Aula(
                         id=1,
-                        titulo="gerarProcedimento: criação do processo",
-                        resumo="Aprenda o nome técnico da operação que gera um novo processo no SEI.",
+                        titulo='gerarProcedimento: criando um processo',
+                        resumo='Conheça a função usada para gerar um novo processo e o que ela recebe.',
                         ordem=1,
-                        duracao_minutos=3,
-                        conteudo="""
-<h2>gerarProcedimento: criação do processo</h2>
-
-<div class="destaque">
-<b>Nome exato no manual:</b> <code>gerarProcedimento</code><br>
-<b>Função:</b> gerar um novo processo no SEI.
-</div>
-
-<p>A operação <code>gerarProcedimento</code> recebe os dados necessários para criar o processo e também pode executar algumas ações complementares na mesma chamada.</p>
-
-<h3>Informações básicas da operação</h3>
-
-<ul>
-    <li><b>SiglaSistema:</b> identifica o sistema cadastrado no SEI.</li>
-    <li><b>IdentificacaoServico:</b> identifica o serviço autorizado.</li>
-    <li><b>IdUnidade:</b> identifica a unidade que está gerando o processo.</li>
-    <li><b>Procedimento:</b> contém os dados do processo que será criado.</li>
-    <li><b>Documentos:</b> permite gerar documentos junto com o processo.</li>
-    <li><b>ProcedimentosRelacionados:</b> permite relacionar processos automaticamente.</li>
-    <li><b>UnidadesEnvio:</b> permite informar unidades para as quais o processo será enviado após a geração.</li>
-</ul>
-
-<h3>O que acontece ao final?</h3>
-
-<p>Quando a operação é concluída, o SEI retorna uma estrutura chamada <b>RetornoGeracaoProcedimento</b>. Entre as informações relacionadas a esse retorno estão o identificador interno, o número formatado do processo e o link de acesso.</p>
-
-<h3>Fluxo mental do servidor</h3>
-
-<p>Mesmo que o servidor não veja o nome <code>gerarProcedimento</code> na tela, a ação de iniciar um processo segue esta lógica:</p>
-
-<ol>
-    <li>selecionar a unidade responsável;</li>
-    <li>definir o tipo do processo;</li>
-    <li>preencher a especificação e demais dados;</li>
-    <li>definir interessados e assuntos quando necessário;</li>
-    <li>definir o nível de acesso;</li>
-    <li>confirmar a geração;</li>
-    <li>passar a trabalhar com o número de protocolo criado.</li>
-</ol>
-
-<div class="destaque">
-O manual utilizado pelo curso descreve a operação técnica, e não os nomes dos botões da interface visual. Por isso o treinamento ensina o fluxo real sem inventar cliques que não aparecem na documentação.
-</div>
-"""
+                        conteudo='<h2>gerarProcedimento: criando um processo</h2>\n<p>A função <code>gerarProcedimento</code> cria um novo processo no SEI. Ela trabalha com a unidade de origem, os dados do procedimento e informações opcionais que podem automatizar etapas posteriores.</p>\n<h3>Entradas principais</h3>\n<ul>\n<li><b>SiglaSistema:</b> identifica o sistema autorizado.</li>\n<li><b>IdentificacaoServico:</b> identifica o serviço configurado.</li>\n<li><b>IdUnidade:</b> unidade onde o processo será gerado.</li>\n<li><b>Procedimento:</b> dados do processo.</li>\n<li><b>Documentos:</b> documentos que podem ser gerados junto com o processo.</li>\n<li><b>ProcedimentosRelacionados:</b> processos que podem ser relacionados automaticamente.</li>\n<li><b>UnidadesEnvio:</b> unidades para as quais o processo pode ser enviado após a geração.</li>\n</ul>\n<h3>Resultado</h3>\n<p>A operação retorna informações da geração do processo. O número formatado criado passa a ser utilizado como referência nas operações seguintes.</p>\n<h3>Sequência lógica para o usuário</h3>\n<ol>\n<li>definir o tipo;</li>\n<li>preencher os dados do processo;</li>\n<li>verificar assuntos e interessados;</li>\n<li>definir nível de acesso;</li>\n<li>confirmar a unidade responsável;</li>\n<li>criar o processo;</li>\n<li>prosseguir com documentos e tramitação.</li>\n</ol>\n<div class="destaque"><b>Importante:</b> Gerar o processo é o início do fluxo, não o fim da tarefa.</div>'
                     ),
                     Aula(
                         id=2,
-                        titulo="Dados necessários para gerar um processo",
-                        resumo="Aprofunde os campos de Procedimento usados durante a criação.",
+                        titulo='Assuntos, interessados e observações',
+                        resumo='Detalhe os dados que ajudam a classificar e contextualizar o processo.',
                         ordem=2,
-                        duracao_minutos=3,
-                        conteudo="""
-<h2>Dados necessários para gerar um processo</h2>
-
-<p>A qualidade do processo começa no momento de sua criação. A estrutura <b>Procedimento</b> mostra quais informações o SEI precisa manipular.</p>
-
-<h3>1. Tipo de processo</h3>
-
-<p><b>IdTipoProcedimento</b> identifica o tipo cadastrado. O servidor deve selecionar o tipo correto porque ele influencia classificação, permissões e comportamento posterior.</p>
-
-<h3>2. Número de protocolo</h3>
-
-<p><b>NumeroProtocolo</b> pode ser informado ou gerado automaticamente pelo SEI quando não é enviado.</p>
-
-<h3>3. Data de autuação</h3>
-
-<p><b>DataAutuacao</b> corresponde à data de autuação. Quando não informada na geração, o SEI utiliza a data atual.</p>
-
-<h3>4. Especificação</h3>
-
-<p><b>Especificacao</b> descreve o processo. Uma especificação clara facilita a identificação do assunto durante consultas e tramitações.</p>
-
-<h3>5. Assuntos</h3>
-
-<p>A estrutura permite informar assuntos adicionais. Se o tipo de processo já possuir assuntos sugeridos, eles podem ser utilizados. Quando o tipo não possui assunto sugerido, o manual indica que pode ser necessário informar pelo menos um assunto.</p>
-
-<h3>6. Interessados</h3>
-
-<p>O SEI trabalha com um conjunto de interessados. A identificação pode utilizar dados como IdContato, CPF, CNPJ, sigla e nome, seguindo a lógica documentada pelo sistema.</p>
-
-<h3>7. Nível de acesso</h3>
-
-<p>O nível pode ser público, restrito ou sigiloso. Se for deixado nulo, o comportamento pode seguir o nível sugerido pelo tipo cadastrado.</p>
-
-<div class="destaque">
-<b>Exercício mental:</b> antes de confirmar um novo processo, tente explicar em uma frase o que ele é, quem está relacionado a ele e por que aquele tipo foi escolhido.
-</div>
-"""
+                        conteudo='<h2>Assuntos, interessados e observações</h2>\n<p>A criação de um processo envolve mais que escolher um tipo. O SEI permite informar assuntos, interessados e observações que ajudam a classificar e contextualizar o trabalho.</p>\n<h3>Assuntos</h3>\n<p>Os assuntos informados são adicionados aos assuntos sugeridos para o tipo de processo. Quando o tipo não possui assuntos sugeridos, pode ser necessário informar ao menos um assunto.</p>\n<h3>Interessados</h3>\n<p>Os interessados são pessoas ou entidades relacionadas ao processo. A identificação pode usar informações como IdContato, CPF, CNPJ, sigla e nome.</p>\n<h3>Observação</h3>\n<p>O campo de observação permite associar um texto da unidade ao processo. Ele deve ser usado de forma objetiva e coerente com o procedimento.</p>\n<h3>Boa classificação</h3>\n<p>Assunto, interessado e especificação devem se complementar. Uma especificação clara com interessados corretos torna o processo mais fácil de localizar e interpretar.</p>\n<div class="destaque"><b>Importante:</b> Evite descrições vagas. O próximo usuário precisa entender o processo sem depender de explicações externas.</div>'
                     ),
                     Aula(
                         id=3,
-                        titulo="Relacionamento, envio e prazo durante a geração",
-                        resumo="Veja recursos adicionais que podem acompanhar a criação do processo.",
+                        titulo='Envio, relacionamento e retorno durante a criação',
+                        resumo='Veja o que pode ser configurado já no momento em que o processo é gerado.',
                         ordem=3,
-                        duracao_minutos=4,
-                        conteudo="""
-<h2>Relacionamento, envio e prazo durante a geração</h2>
-
-<p>A operação <code>gerarProcedimento</code> não está limitada a criar um processo vazio. O manual documenta vários recursos complementares.</p>
-
-<h3>ProcedimentosRelacionados</h3>
-
-<p>É possível informar identificadores de outros processos que devem ser relacionados automaticamente ao novo processo.</p>
-
-<h3>UnidadesEnvio</h3>
-
-<p>Também é possível informar unidades para envio após a geração. O manual explica que o processo ficará aberto na unidade geradora e nas unidades indicadas nesse parâmetro.</p>
-
-<h3>SinManterAbertoUnidade</h3>
-
-<p>Esse sinalizador determina se o processo deve permanecer aberto na unidade de origem. No contexto de <code>gerarProcedimento</code>, o valor padrão documentado é S.</p>
-
-<h3>Notificação</h3>
-
-<p><b>SinEnviarEmailNotificacao</b> indica se deve ser enviado um aviso por e-mail às unidades destinatárias. O valor padrão documentado é N.</p>
-
-<h3>Retorno Programado</h3>
-
-<p>A operação aceita:</p>
-
-<ul>
-    <li><b>DataRetornoProgramado;</b></li>
-    <li><b>DiasRetornoProgramado;</b></li>
-    <li><b>SinDiasUteisRetornoProgramado.</b></li>
-</ul>
-
-<p>Esses campos permitem representar uma necessidade de retorno em data ou prazo.</p>
-
-<h3>Marcadores e Controle de Prazo</h3>
-
-<p>Também aparecem parâmetros para marcador e controle de prazo, como <b>IdMarcador</b>, <b>TextoMarcador</b>, <b>DataControlePrazo</b> e <b>DiasControlePrazo</b>.</p>
-
-<div class="destaque">
-Essa aula mostra por que um fluxo bem mapeado é importante: o SEI possui mecanismos para relacionar, encaminhar, marcar e controlar prazos. O procedimento administrativo precisa dizer quando usar cada um deles.
-</div>
-"""
-                    ),
+                        conteudo='<h2>Envio, relacionamento e retorno durante a criação</h2>\n<p>A criação de um processo pode ser acompanhada de ações adicionais. Isso permite que determinados fluxos sejam iniciados já com relacionamento, envio e controles.</p>\n<h3>UnidadesEnvio</h3>\n<p>Permite informar unidades destinatárias após a geração. O processo pode permanecer aberto na unidade geradora e também nas unidades informadas.</p>\n<h3>SinManterAbertoUnidade</h3>\n<p>Controla se o processo permanecerá aberto na unidade de origem. Esse comportamento precisa estar alinhado ao fluxo administrativo.</p>\n<h3>Retorno Programado</h3>\n<p>Podem ser usados campos de data ou quantidade de dias para definir um retorno programado. Também existe indicação para considerar dias úteis.</p>\n<h3>Marcador e controle de prazo</h3>\n<p>A geração também pode receber informações de marcador e de controle de prazo, permitindo que o novo processo já entre no fluxo com elementos de organização.</p>\n<div class="destaque"><b>Importante:</b> Automatizar uma etapa só faz sentido quando o fluxo já está claramente definido.</div>'
+                    )
                 ]
             ),
-
             Curso(
                 id=3,
-                titulo="3. Documentos: incluirDocumento e consultarDocumento",
-                descricao="Aprenda como o SEI diferencia documentos gerados e recebidos e como eles são incluídos em processos.",
-                nivel="Operações",
+                titulo='3. Documentos no processo',
+                descricao='Aprenda a criar, incluir e consultar documentos internos e externos.',
+                nivel='Documentos',
                 aulas=[
                     Aula(
                         id=1,
-                        titulo="Estrutura Documento: gerado ou recebido",
-                        resumo="Conheça os campos usados pelo SEI para representar um documento.",
+                        titulo='Documento gerado e documento recebido',
+                        resumo='Entenda os dois tipos principais de documento usados no SEI.',
                         ordem=1,
-                        duracao_minutos=3,
-                        conteudo="""
-<h2>Estrutura Documento: gerado ou recebido</h2>
-
-<div class="destaque">
-<b>Nome usado no manual:</b> <code>Documento</code>
-</div>
-
-<p>O manual diferencia dois tipos principais de documento:</p>
-
-<ul>
-    <li><b>G - documento gerado:</b> documento produzido no ambiente do SEI.</li>
-    <li><b>R - documento recebido:</b> documento externo incorporado ao processo.</li>
-</ul>
-
-<h3>Ligação com o processo</h3>
-
-<p>Um documento precisa estar associado a um processo. O manual permite essa associação por <b>IdProcedimento</b> ou pelo <b>ProtocoloProcedimento</b>.</p>
-
-<h3>Tipo do documento</h3>
-
-<p><b>IdSerie</b> identifica o tipo de documento cadastrado no SEI.</p>
-
-<h3>Campos importantes</h3>
-
-<ul>
-    <li><b>Numero:</b> número do documento.</li>
-    <li><b>NomeArvore:</b> nome complementar exibido na árvore do processo.</li>
-    <li><b>Data:</b> obrigatória para documentos externos e nula para documentos gerados, conforme a estrutura documentada.</li>
-    <li><b>Descricao:</b> descrição usada para documentos gerados.</li>
-    <li><b>IdTipoConferencia:</b> tipo de conferência associado ao documento externo.</li>
-    <li><b>Remetente:</b> obrigatório para documentos externos.</li>
-    <li><b>Interessados:</b> conjunto de interessados relacionados.</li>
-</ul>
-
-<h3>Por que separar gerado e recebido?</h3>
-
-<p>Porque o SEI trata de maneira diferente aquilo que foi produzido internamente e aquilo que chegou de fora. Essa origem influencia campos obrigatórios e a forma como o documento é registrado.</p>
-
-<div class="destaque">
-<b>Memorize:</b> processo contém documentos. Documento não deve ser tratado como um arquivo solto sem contexto.
-</div>
-"""
+                        conteudo='<h2>Documento gerado e documento recebido</h2>\n<p>A estrutura <b>Documento</b> diferencia documentos produzidos no ambiente eletrônico e documentos recebidos de fontes externas.</p>\n<h3>Tipo G</h3>\n<p><b>G</b> representa documento gerado. Ele pode possuir descrição, conteúdo produzido no editor e outras informações próprias de um documento interno.</p>\n<h3>Tipo R</h3>\n<p><b>R</b> representa documento recebido ou externo. Ele exige atenção a informações como data, nome do arquivo, remetente e tipo de conferência.</p>\n<h3>Associação ao processo</h3>\n<p>O documento pode ser associado ao processo por IdProcedimento ou ProtocoloProcedimento. O objetivo é garantir que o documento seja incluído no processo correto.</p>\n<h3>IdSerie</h3>\n<p><b>IdSerie</b> identifica o tipo de documento cadastrado no SEI. A função <code>listarSeries</code> permite obter as séries autorizadas de acordo com unidade e tipo de processo.</p>\n<div class="destaque"><b>Importante:</b> Documento não é apenas um arquivo anexado. Ele possui tipo, origem, identificação e regras próprias.</div>'
                     ),
                     Aula(
                         id=2,
-                        titulo="incluirDocumento: inserindo no processo",
-                        resumo="Veja a operação documentada para incluir um documento no processo.",
+                        titulo='incluirDocumento: adicionando um documento',
+                        resumo='Conheça a função de inclusão e a sequência de dados necessários.',
                         ordem=2,
-                        duracao_minutos=3,
-                        conteudo="""
-<h2>incluirDocumento: inserindo no processo</h2>
-
-<div class="destaque">
-<b>Nome exato no manual:</b> <code>incluirDocumento</code>
-</div>
-
-<p>A operação <code>incluirDocumento</code> recebe quatro grupos de informação principais:</p>
-
-<ul>
-    <li><b>SiglaSistema;</b></li>
-    <li><b>IdentificacaoServico;</b></li>
-    <li><b>IdUnidade;</b></li>
-    <li><b>Documento.</b></li>
-</ul>
-
-<p>O campo <b>Documento</b> contém os dados da estrutura estudada na aula anterior.</p>
-
-<h3>O que o SEI retorna?</h3>
-
-<p>A saída é uma ocorrência de <b>RetornoInclusaoDocumento</b>. A estrutura de retorno permite identificar o documento criado e trabalhar com seu número visível e link de acesso.</p>
-
-<h3>Fluxo equivalente no uso do sistema</h3>
-
-<ol>
-    <li>abrir ou localizar o processo correto;</li>
-    <li>definir o tipo de documento;</li>
-    <li>informar os dados exigidos para aquele documento;</li>
-    <li>indicar se ele é gerado ou recebido;</li>
-    <li>preencher os campos específicos;</li>
-    <li>confirmar sua inclusão no processo;</li>
-    <li>verificar o documento na árvore do processo.</li>
-</ol>
-
-<h3>Cuidados</h3>
-
-<ul>
-    <li>não inserir um documento no processo errado;</li>
-    <li>não utilizar tipo de documento incompatível;</li>
-    <li>informar corretamente a origem do documento;</li>
-    <li>conferir o nível de acesso;</li>
-    <li>usar uma identificação clara na árvore.</li>
-</ul>
-
-<div class="destaque">
-O manual técnico não documenta os botões visuais usados pelo servidor. Portanto, o curso mantém o nome oficial da operação e ensina a sequência lógica que ela representa.
-</div>
-"""
+                        conteudo='<h2>incluirDocumento: adicionando um documento</h2>\n<p>A função <code>incluirDocumento</code> adiciona um documento a um processo. Ela recebe a unidade e a estrutura completa do documento.</p>\n<h3>O que precisa ser informado</h3>\n<ul>\n<li>identificação do sistema e do serviço;</li>\n<li>unidade responsável;</li>\n<li>dados da estrutura Documento;</li>\n<li>processo ao qual o documento pertence;</li>\n<li>tipo do documento;</li>\n<li>campos específicos para documento gerado ou recebido.</li>\n</ul>\n<h3>Retorno</h3>\n<p>A operação retorna informações da inclusão, incluindo identificadores que permitem localizar o documento criado.</p>\n<h3>Erros comuns que o treinamento deve evitar</h3>\n<ul>\n<li>incluir no processo errado;</li>\n<li>selecionar tipo de documento inadequado;</li>\n<li>não preencher dados obrigatórios de documento externo;</li>\n<li>usar nível de acesso incorreto;</li>\n<li>nomear o arquivo de forma pouco clara.</li>\n</ul>\n<div class="destaque"><b>Importante:</b> A inclusão correta facilita leitura, assinatura, consulta e organização posterior.</div>'
                     ),
                     Aula(
                         id=3,
-                        titulo="consultarDocumento e informações retornadas",
-                        resumo="Aprenda o que pode ser consultado sobre um documento já existente.",
+                        titulo='consultarDocumento',
+                        resumo='Veja quais dados de um documento podem ser consultados.',
                         ordem=3,
-                        duracao_minutos=4,
-                        conteudo="""
-<h2>consultarDocumento e informações retornadas</h2>
-
-<div class="destaque">
-<b>Nome exato no manual:</b> <code>consultarDocumento</code>
-</div>
-
-<p>Para consultar um documento, o SEI utiliza o <b>ProtocoloDocumento</b>, isto é, o número visível do documento.</p>
-
-<p>A operação também possui sinalizadores que determinam quais informações adicionais devem ser retornadas.</p>
-
-<h3>Informações opcionais</h3>
-
-<ul>
-    <li><b>SinRetornarAndamentoGeracao:</b> andamento de geração.</li>
-    <li><b>SinRetornarAssinaturas:</b> assinaturas do documento.</li>
-    <li><b>SinRetornarPublicacao:</b> dados de publicação.</li>
-    <li><b>SinRetornarCampos:</b> campos de formulário.</li>
-    <li><b>SinRetornarBlocos:</b> blocos da unidade que contêm o documento.</li>
-</ul>
-
-<p>A saída é uma estrutura <b>RetornoConsultaDocumento</b>.</p>
-
-<h3>Observação importante do manual</h3>
-
-<p>Documentos pertencentes a processos sigilosos não são retornados por essa operação. O manual também recomenda pedir apenas as informações realmente necessárias, porque cada sinalizador acrescenta processamento.</p>
-
-<h3>No treinamento do usuário</h3>
-
-<p>A ideia central é aprender que consultar um documento não significa apenas “abrir um arquivo”. O SEI consegue relacionar ao documento informações como:</p>
-
-<ul>
-    <li>processo ao qual pertence;</li>
-    <li>nível de acesso;</li>
-    <li>unidade elaboradora;</li>
-    <li>andamento de geração;</li>
-    <li>assinaturas;</li>
-    <li>publicação;</li>
-    <li>blocos.</li>
-</ul>
-
-<div class="destaque">
-Quando estiver analisando um processo, observe o documento dentro do contexto do processo, e não isoladamente.
-</div>
-"""
-                    ),
+                        conteudo='<h2>consultarDocumento</h2>\n<p>A função <code>consultarDocumento</code> consulta um documento a partir do seu protocolo e pode retornar informações adicionais controladas por sinalizadores.</p>\n<h3>Informações opcionais</h3>\n<ul>\n<li>andamento de geração;</li>\n<li>assinaturas;</li>\n<li>publicação;</li>\n<li>campos de formulário;</li>\n<li>blocos em que o documento aparece.</li>\n</ul>\n<h3>Retorno da consulta</h3>\n<p>O retorno pode incluir processo relacionado, número do documento, níveis de acesso, link de acesso, tipo de documento, unidade elaboradora, assinaturas e publicação.</p>\n<h3>Processos sigilosos</h3>\n<p>Documentos de processos sigilosos não são retornados por essa consulta. Isso demonstra que a visibilidade depende das regras de acesso e do contexto.</p>\n<h3>Uso eficiente</h3>\n<p>Solicite apenas as informações realmente necessárias. Cada conjunto adicional de dados pode aumentar o processamento.</p>\n<div class="destaque"><b>Importante:</b> Consultar documento é analisar seu contexto, não apenas abrir seu conteúdo.</div>'
+                    )
                 ]
             ),
-
             Curso(
                 id=4,
-                titulo="4. Tramitação: enviarProcesso",
-                descricao="Entenda como o SEI envia um processo entre unidades e quais controles podem acompanhar o envio.",
-                nivel="Operações",
+                titulo='4. Arquivos e documentos externos',
+                descricao='Entenda como arquivos são preparados e associados a documentos externos.',
+                nivel='Documentos',
                 aulas=[
                     Aula(
                         id=1,
-                        titulo="enviarProcesso: tramitação entre unidades",
-                        resumo="Conheça a operação que representa o envio de um processo para outra unidade.",
+                        titulo='adicionarArquivo: preparando arquivo externo',
+                        resumo='Entenda como arquivos externos podem ser enviados antes de sua associação a um documento.',
                         ordem=1,
-                        duracao_minutos=3,
-                        conteudo="""
-<h2>enviarProcesso: tramitação entre unidades</h2>
-
-<div class="destaque">
-<b>Nome exato no manual:</b> <code>enviarProcesso</code>
-</div>
-
-<p>A tramitação é uma das ações centrais do trabalho no SEI. No manual de Web Services, ela é representada pela operação <code>enviarProcesso</code>.</p>
-
-<h3>Dados principais</h3>
-
-<ul>
-    <li><b>IdUnidade:</b> unidade que está realizando o envio.</li>
-    <li><b>ProtocoloProcedimento:</b> número do processo.</li>
-    <li><b>UnidadesDestino:</b> conjunto de unidades destinatárias.</li>
-</ul>
-
-<h3>Manter aberto na origem</h3>
-
-<p><b>SinManterAbertoUnidade</b> define se o processo deve continuar aberto na unidade de origem depois do envio. Para essa operação, o valor padrão documentado é N.</p>
-
-<h3>Remoção de anotação</h3>
-
-<p><b>SinRemoverAnotacao</b> indica se uma anotação deve ser removida durante o envio.</p>
-
-<h3>Notificação</h3>
-
-<p><b>SinEnviarEmailNotificacao</b> indica se as unidades destinatárias devem receber aviso por e-mail.</p>
-
-<h3>Reabertura automática</h3>
-
-<p><b>SinReabrir</b> permite solicitar reabertura automática caso o processo esteja concluído na unidade. O manual informa que, para isso, o serviço também precisa possuir a operação <b>Reabrir Processo</b> liberada.</p>
-
-<div class="destaque">
-<b>Antes de enviar:</b> confira processo, unidade de origem, destino e se a sua etapa realmente terminou.
-</div>
-"""
+                        conteudo='<h2>adicionarArquivo: preparando arquivo externo</h2>\n<p>A função <code>adicionarArquivo</code> cria um arquivo no repositório e retorna um identificador que poderá ser usado depois em um documento externo.</p>\n<h3>Entradas</h3>\n<ul>\n<li><b>Nome:</b> nome do arquivo;</li>\n<li><b>Tamanho:</b> tamanho total em bytes;</li>\n<li><b>Hash:</b> MD5 do conteúdo total;</li>\n<li><b>Conteudo:</b> conteúdo total ou parcial codificado em Base64.</li>\n</ul>\n<h3>IdArquivo</h3>\n<p>Depois do envio, o SEI retorna o identificador do arquivo. Esse IdArquivo pode ser informado na estrutura Documento.</p>\n<h3>Por que existe essa etapa</h3>\n<p>Arquivos maiores podem ser enviados separadamente antes da criação do documento externo. Isso evita a necessidade de repetir o conteúdo no momento da inclusão.</p>\n<div class="destaque"><b>Importante:</b> O arquivo precisa ser corretamente associado a um documento; enviar o arquivo sozinho não conclui a inclusão documental.</div>'
                     ),
                     Aula(
                         id=2,
-                        titulo="Retorno Programado no envio",
-                        resumo="Entenda os campos de prazo que podem acompanhar a tramitação.",
+                        titulo='adicionarConteudoArquivo: envio em partes',
+                        resumo='Veja como o SEI completa um arquivo que foi enviado parcialmente.',
                         ordem=2,
-                        duracao_minutos=3,
-                        conteudo="""
-<h2>Retorno Programado no envio</h2>
-
-<p>A operação <code>enviarProcesso</code> pode associar uma expectativa de retorno ao processo.</p>
-
-<h3>Campos documentados</h3>
-
-<ul>
-    <li><b>DataRetornoProgramado:</b> define uma data de retorno.</li>
-    <li><b>DiasRetornoProgramado:</b> define quantidade de dias.</li>
-    <li><b>SinDiasUteisRetornoProgramado:</b> informa se os dias devem ser considerados úteis.</li>
-</ul>
-
-<h3>Por que isso importa?</h3>
-
-<p>Em um processo administrativo, o envio não deve significar perda de acompanhamento. Quando o procedimento exige retorno em determinado prazo, o sistema possui mecanismo para registrar essa expectativa.</p>
-
-<h3>Exemplo de fluxo</h3>
-
-<ol>
-    <li>A unidade A conclui sua análise.</li>
-    <li>O processo precisa seguir para a unidade B.</li>
-    <li>A unidade A envia o processo.</li>
-    <li>O fluxo prevê retorno depois de determinado período.</li>
-    <li>O retorno programado ajuda a controlar essa necessidade.</li>
-</ol>
-
-<h3>O que o servidor precisa saber</h3>
-
-<p>O recurso só faz sentido se o fluxo administrativo estiver definido. O prazo não deve ser inserido aleatoriamente. Ele deve refletir a regra ou necessidade do processo.</p>
-
-<div class="destaque">
-BPM e SEI se encontram aqui: o processo mapeado define o prazo; o sistema ajuda a controlar o prazo.
-</div>
-"""
+                        conteudo='<h2>adicionarConteudoArquivo: envio em partes</h2>\n<p>Quando o conteúdo não é enviado de uma vez, a função <code>adicionarConteudoArquivo</code> adiciona novas partes ao arquivo já criado.</p>\n<h3>Dados utilizados</h3>\n<p>A função recebe o <b>IdArquivo</b> criado anteriormente e um novo bloco de <b>Conteudo</b> codificado em Base64.</p>\n<h3>Validação</h3>\n<p>O SEI verifica automaticamente quando o conteúdo está completo, comparando o tamanho esperado e o hash do arquivo.</p>\n<h3>Ativação</h3>\n<p>Quando o tamanho e o hash estão corretos, o arquivo é ativado e pode ser usado em chamadas de inclusão de documento.</p>\n<h3>Arquivo incompleto</h3>\n<p>Arquivos incompletos ou não associados podem ser removidos posteriormente pelo processo de limpeza do repositório.</p>\n<div class="destaque"><b>Importante:</b> Dividir o envio não muda o arquivo final: todas as partes precisam formar exatamente o conteúdo esperado.</div>'
                     ),
                     Aula(
                         id=3,
-                        titulo="Atribuir, anexar e organizar processos",
-                        resumo="Conheça operações complementares que aparecem no manual.",
+                        titulo='Conteudo, ConteudoMTOM e IdArquivo',
+                        resumo='Aprenda as formas de associar conteúdo a documentos.',
                         ordem=3,
-                        duracao_minutos=4,
-                        conteudo="""
-<h2>Atribuir, anexar e organizar processos</h2>
-
-<p>Além do envio, o manual documenta outras operações importantes.</p>
-
-<h3>atribuirProcesso</h3>
-
-<p>A operação <code>atribuirProcesso</code> recebe:</p>
-
-<ul>
-    <li>unidade;</li>
-    <li>protocolo do processo;</li>
-    <li>identificador do usuário;</li>
-    <li>um sinalizador de reabertura automática.</li>
-</ul>
-
-<p>Ela representa a associação do processo a um usuário dentro da unidade.</p>
-
-<h3>anexarProcesso</h3>
-
-<p>A operação <code>anexarProcesso</code> trabalha com:</p>
-
-<ul>
-    <li>ProtocoloProcedimentoPrincipal;</li>
-    <li>ProtocoloProcedimentoAnexado.</li>
-</ul>
-
-<p>Ou seja, existe um processo principal e outro que será anexado a ele.</p>
-
-<h3>Por que aprender isso?</h3>
-
-<p>Porque diferentes ações possuem significados diferentes:</p>
-
-<ul>
-    <li><b>Enviar</b> altera a tramitação entre unidades.</li>
-    <li><b>Atribuir</b> relaciona o trabalho a um usuário.</li>
-    <li><b>Anexar</b> estabelece uma relação específica entre processos.</li>
-</ul>
-
-<div class="destaque">
-Não trate “enviar”, “atribuir” e “anexar” como sinônimos. Cada operação representa uma mudança diferente no processo.
-</div>
-"""
-                    ),
+                        conteudo='<h2>Conteudo, ConteudoMTOM e IdArquivo</h2>\n<p>A estrutura Documento possui diferentes caminhos para representar o conteúdo do documento.</p>\n<h3>Conteudo</h3>\n<p>Pode carregar conteúdo codificado em Base64. Para documentos gerados, representa conteúdo do editor; para externos, pode representar o anexo.</p>\n<h3>ConteudoMTOM</h3>\n<p>É uma alternativa para conteúdo textual ou binário em documentos externos. O sistema aceita apenas uma das formas de conteúdo previstas para a requisição.</p>\n<h3>IdArquivo</h3>\n<p>Permite associar um arquivo previamente enviado por <code>adicionarArquivo</code> e completado, quando necessário, por <code>adicionarConteudoArquivo</code>.</p>\n<h3>Escolha correta</h3>\n<p>A forma de envio depende do tipo de documento e da maneira como a integração está estruturada. Para o usuário final, o conceito importante é que documento externo precisa possuir conteúdo e identificação coerentes.</p>\n<div class="destaque"><b>Importante:</b> O conteúdo é parte do documento, mas os metadados continuam sendo essenciais para sua organização.</div>'
+                    )
                 ]
             ),
-
             Curso(
                 id=5,
-                titulo="5. Consulta e acompanhamento",
-                descricao="Aprenda a consultar processos e interpretar andamentos antes de tomar uma decisão.",
-                nivel="Acompanhamento",
+                titulo='5. Tramitação e responsabilidade',
+                descricao='Aprenda a enviar processos, controlar retorno e atribuir responsáveis.',
+                nivel='Tramitação',
                 aulas=[
                     Aula(
                         id=1,
-                        titulo="consultarProcedimento: lendo o processo",
-                        resumo="Veja as informações que podem ser retornadas durante a consulta de um processo.",
+                        titulo='enviarProcesso',
+                        resumo='Conheça a função de tramitação entre unidades.',
                         ordem=1,
-                        duracao_minutos=3,
-                        conteudo="""
-<h2>consultarProcedimento: lendo o processo</h2>
-
-<div class="destaque">
-<b>Nome exato no manual:</b> <code>consultarProcedimento</code>
-</div>
-
-<p>Essa operação consulta um processo a partir do <b>ProtocoloProcedimento</b>.</p>
-
-<h3>O que pode ser solicitado?</h3>
-
-<ul>
-    <li><b>Assuntos</b> do processo.</li>
-    <li><b>Interessados</b>.</li>
-    <li><b>Observações</b> das unidades.</li>
-    <li><b>Andamento de geração</b>.</li>
-    <li><b>Andamento de conclusão</b>.</li>
-    <li><b>Último andamento</b>.</li>
-    <li><b>Unidades onde o processo está aberto</b>.</li>
-    <li><b>Processos relacionados</b>.</li>
-    <li><b>Processos anexados</b>.</li>
-</ul>
-
-<h3>Saída da consulta</h3>
-
-<p>O retorno é uma estrutura chamada <b>RetornoConsultaProcedimento</b>.</p>
-
-<p>Ela pode trazer informações como número formatado, especificação, data de autuação, nível de acesso, link de acesso, tipo de procedimento, último andamento, unidades onde o processo está aberto e outros conjuntos relacionados.</p>
-
-<h3>Regra operacional</h3>
-
-<p>Antes de decidir o que fazer com um processo, consulte seu contexto:</p>
-
-<ol>
-    <li>qual é a especificação;</li>
-    <li>qual foi o último andamento;</li>
-    <li>em quais unidades está aberto;</li>
-    <li>quais documentos e relações já existem;</li>
-    <li>qual é a próxima etapa prevista.</li>
-</ol>
-
-<div class="destaque">
-O manual informa que processos sigilosos não são retornados por essa operação.
-</div>
-"""
+                        conteudo='<h2>enviarProcesso</h2>\n<p>A função <code>enviarProcesso</code> encaminha um processo para uma ou mais unidades destinatárias.</p>\n<h3>Entradas essenciais</h3>\n<ul>\n<li><b>IdUnidade:</b> unidade que realiza o envio;</li>\n<li><b>ProtocoloProcedimento:</b> processo enviado;</li>\n<li><b>UnidadesDestino:</b> unidades que receberão o processo.</li>\n</ul>\n<h3>Manter aberto na origem</h3>\n<p><b>SinManterAbertoUnidade</b> indica se o processo continuará aberto na unidade de origem depois da tramitação.</p>\n<h3>Notificação</h3>\n<p><b>SinEnviarEmailNotificacao</b> permite solicitar aviso por e-mail às unidades destinatárias.</p>\n<h3>Reabertura automática</h3>\n<p><b>SinReabrir</b> pode reabrir automaticamente um processo concluído, desde que a operação de reabertura esteja autorizada.</p>\n<div class="destaque"><b>Importante:</b> Antes de enviar, confira se a unidade destinatária realmente representa a próxima etapa do fluxo.</div>'
                     ),
                     Aula(
                         id=2,
-                        titulo="listarAndamentos: entendendo o histórico",
-                        resumo="Aprenda como o SEI representa acontecimentos e tarefas registrados no processo.",
+                        titulo='Retorno Programado',
+                        resumo='Aprenda a usar a ideia de retorno dentro da tramitação.',
                         ordem=2,
-                        duracao_minutos=3,
-                        conteudo="""
-<h2>listarAndamentos: entendendo o histórico</h2>
-
-<div class="destaque">
-<b>Nome exato no manual:</b> <code>listarAndamentos</code>
-</div>
-
-<p>O andamento representa um registro ligado ao histórico do processo.</p>
-
-<p>A operação <code>listarAndamentos</code> utiliza o número do processo e permite filtrar resultados.</p>
-
-<h3>Filtros documentados</h3>
-
-<ul>
-    <li><b>Andamentos:</b> filtra identificadores de andamentos.</li>
-    <li><b>Tarefas:</b> filtra identificadores de tarefas.</li>
-    <li><b>TarefasModulos:</b> filtra tarefas de módulos.</li>
-    <li><b>SinRetornarAtributos:</b> define se os atributos associados também serão retornados.</li>
-</ul>
-
-<p>O manual exige que pelo menos um dos filtros Andamentos, Tarefas ou TarefasModulos seja informado.</p>
-
-<h3>lancarAndamento</h3>
-
-<p>O manual também documenta <code>lancarAndamento</code>, que registra um andamento e pode utilizar atributos associados.</p>
-
-<p>Para atualização textual de andamento, o documento menciona a tarefa 65 com atributo chamado <b>DESCRICAO</b>.</p>
-
-<h3>Como isso ajuda o servidor?</h3>
-
-<p>O histórico deve ser lido como uma narrativa do processo:</p>
-
-<ul>
-    <li>quem executou ações;</li>
-    <li>qual unidade participou;</li>
-    <li>quando determinada movimentação ocorreu;</li>
-    <li>quais tarefas foram registradas.</li>
-</ul>
-
-<div class="destaque">
-Antes de repetir uma ação, confira o histórico. Muitas falhas de processo acontecem porque alguém age sem observar o que já foi feito.
-</div>
-"""
+                        conteudo='<h2>Retorno Programado</h2>\n<p>O envio de um processo pode incluir uma expectativa de retorno. Isso é útil quando a unidade de origem precisa acompanhar uma resposta futura.</p>\n<h3>DataRetornoProgramado</h3>\n<p>Permite informar uma data específica de retorno.</p>\n<h3>DiasRetornoProgramado</h3>\n<p>Permite definir uma quantidade de dias em vez de uma data fixa.</p>\n<h3>SinDiasUteisRetornoProgramado</h3>\n<p>Indica se o prazo em dias deve considerar dias úteis.</p>\n<h3>Uso no fluxo</h3>\n<p>O retorno programado deve refletir uma necessidade real do processo. Ele não substitui a definição do procedimento administrativo.</p>\n<div class="destaque"><b>Importante:</b> Prazo sem regra vira ruído. Use controles quando existir uma responsabilidade clara de acompanhamento.</div>'
                     ),
                     Aula(
                         id=3,
-                        titulo="Processos sigilosos e retorno de informações",
-                        resumo="Entenda limitações documentadas nas operações de consulta.",
+                        titulo='atribuirProcesso',
+                        resumo='Entenda como um processo pode ser atribuído a um usuário.',
                         ordem=3,
-                        duracao_minutos=4,
-                        conteudo="""
-<h2>Processos sigilosos e retorno de informações</h2>
-
-<p>O manual apresenta restrições específicas para consultas.</p>
-
-<h3>consultarProcedimento</h3>
-
-<p>Processos sigilosos não são retornados pela operação.</p>
-
-<h3>consultarDocumento</h3>
-
-<p>Documentos pertencentes a processos sigilosos também não são retornados.</p>
-
-<h3>Solicitar somente o necessário</h3>
-
-<p>Nas operações de consulta, diversos campos são controlados por sinalizadores. O manual recomenda solicitar apenas as informações estritamente necessárias porque cada sinalizador pode exigir processamento adicional.</p>
-
-<h3>O que isso ensina?</h3>
-
-<p>O usuário deve compreender que acesso e visibilidade não dependem apenas do número do processo. O sistema considera regras de acesso, unidade, serviço e nível de classificação.</p>
-
-<h3>Boa prática de treinamento</h3>
-
-<p>Se uma informação não aparece para o usuário, não conclua imediatamente que ela foi apagada ou que o processo não existe. Primeiro considere:</p>
-
-<ul>
-    <li>nível de acesso;</li>
-    <li>unidade;</li>
-    <li>perfil;</li>
-    <li>permissões;</li>
-    <li>tipo de consulta realizada.</li>
-</ul>
-
-<div class="destaque">
-Segurança no SEI não é um detalhe separado do processo. Ela faz parte do próprio fluxo de informação.
-</div>
-"""
-                    ),
+                        conteudo='<h2>atribuirProcesso</h2>\n<p>A função <code>atribuirProcesso</code> associa o processo a um usuário dentro de uma unidade.</p>\n<h3>Dados principais</h3>\n<ul>\n<li>IdUnidade;</li>\n<li>ProtocoloProcedimento;</li>\n<li>IdUsuario;</li>\n<li>SinReabrir.</li>\n</ul>\n<h3>Diferença entre atribuir e enviar</h3>\n<p><b>Enviar</b> movimenta o processo entre unidades. <b>Atribuir</b> organiza a responsabilidade de um usuário dentro da unidade.</p>\n<h3>Reabertura</h3>\n<p>Se necessário, a atribuição pode solicitar reabertura automática de um processo concluído.</p>\n<h3>Uso recomendado</h3>\n<p>Atribuição é útil para deixar claro quem está responsável pela análise ou execução de uma etapa dentro da unidade.</p>\n<div class="destaque"><b>Importante:</b> Atribuir não substitui a tramitação. São ações com objetivos diferentes.</div>'
+                    )
                 ]
             ),
-
             Curso(
                 id=6,
-                titulo="6. Conclusão, reabertura e revisão",
-                descricao="Finalize a formação entendendo como o SEI encerra e reabre a atuação de uma unidade.",
-                nivel="Fechamento",
+                titulo='6. Consulta, histórico e anotações',
+                descricao='Aprenda a consultar processos e interpretar seu histórico de trabalho.',
+                nivel='Acompanhamento',
                 aulas=[
                     Aula(
                         id=1,
-                        titulo="concluirProcesso: encerrando a atuação da unidade",
-                        resumo="Aprenda o significado da operação de conclusão.",
+                        titulo='consultarProcedimento',
+                        resumo='Veja como o SEI retorna informações completas de um processo.',
                         ordem=1,
-                        duracao_minutos=3,
-                        conteudo="""
-<h2>concluirProcesso: encerrando a atuação da unidade</h2>
-
-<div class="destaque">
-<b>Nome exato no manual:</b> <code>concluirProcesso</code>
-</div>
-
-<p>A operação <code>concluirProcesso</code> recebe:</p>
-
-<ul>
-    <li><b>SiglaSistema;</b></li>
-    <li><b>IdentificacaoServico;</b></li>
-    <li><b>IdUnidade:</b> unidade onde o processo está aberto;</li>
-    <li><b>ProtocoloProcedimento:</b> número visível do processo.</li>
-</ul>
-
-<p>Quando executada com sucesso, a operação retorna verdadeiro.</p>
-
-<h3>O que “concluir” significa?</h3>
-
-<p>Conclusão não deve ser confundida com exclusão. O próprio manual documenta <code>excluirProcesso</code> como uma operação diferente.</p>
-
-<p>Portanto, quando a unidade conclui um processo, o conceito é encerrar sua atuação naquele contexto, e não apagar o histórico administrativo.</p>
-
-<h3>Antes de concluir</h3>
-
-<ol>
-    <li>verifique se existem tarefas pendentes;</li>
-    <li>confira os documentos necessários;</li>
-    <li>leia o último andamento;</li>
-    <li>confirme se outra unidade ainda precisa receber o processo;</li>
-    <li>confirme se sua unidade realmente terminou a atuação.</li>
-</ol>
-
-<div class="destaque">
-<b>Pergunta de controle:</b> se o processo desaparecer da lista de trabalho da minha unidade agora, ainda existe alguma ação que eu deveria executar? Se a resposta for sim, ele provavelmente ainda não deve ser concluído.
-</div>
-"""
+                        conteudo='<h2>consultarProcedimento</h2>\n<p>A função <code>consultarProcedimento</code> consulta um processo a partir do seu protocolo e pode retornar diferentes conjuntos de informações.</p>\n<h3>Dados adicionais que podem ser solicitados</h3>\n<ul>\n<li>assuntos;</li>\n<li>interessados;</li>\n<li>observações;</li>\n<li>andamento de geração;</li>\n<li>andamento de conclusão;</li>\n<li>último andamento;</li>\n<li>unidades onde o processo está aberto;</li>\n<li>processos relacionados;</li>\n<li>processos anexados.</li>\n</ul>\n<h3>O retorno</h3>\n<p>O retorno pode apresentar especificação, data de autuação, níveis de acesso, tipo de processo, andamentos e relações com outros processos.</p>\n<h3>Antes de agir</h3>\n<p>Consultar o contexto ajuda a evitar duplicidade de ações e decisões baseadas em informações incompletas.</p>\n<div class="destaque"><b>Importante:</b> Leia o estado atual do processo antes de alterar seu estado.</div>'
                     ),
                     Aula(
                         id=2,
-                        titulo="reabrirProcesso: retomando o trabalho",
-                        resumo="Veja como um processo concluído pode voltar a exigir atuação.",
+                        titulo='listarAndamentos e lancarAndamento',
+                        resumo='Entenda como o histórico do processo pode ser consultado e atualizado.',
                         ordem=2,
-                        duracao_minutos=3,
-                        conteudo="""
-<h2>reabrirProcesso: retomando o trabalho</h2>
-
-<div class="destaque">
-<b>Nome exato no manual:</b> <code>reabrirProcesso</code>
-</div>
-
-<p>A operação de reabertura utiliza:</p>
-
-<ul>
-    <li><b>IdUnidade:</b> unidade por onde o processo tramitou;</li>
-    <li><b>ProtocoloProcedimento:</b> número do processo.</li>
-</ul>
-
-<p>Quando executada corretamente, a operação retorna verdadeiro.</p>
-
-<h3>Por que reabrir?</h3>
-
-<p>Um processo pode ter sido concluído em uma unidade e, posteriormente, voltar a exigir uma ação. A reabertura permite retomar o trabalho naquele processo.</p>
-
-<h3>Relação com enviarProcesso</h3>
-
-<p>O manual mostra que <code>enviarProcesso</code> possui o sinalizador <b>SinReabrir</b>. Caso o processo esteja concluído na unidade, ele pode solicitar reabertura automática, desde que a operação “Reabrir Processo” também esteja autorizada para o serviço.</p>
-
-<h3>Relação com atribuirProcesso</h3>
-
-<p>A operação <code>atribuirProcesso</code> também possui o sinalizador <b>SinReabrir</b>.</p>
-
-<div class="destaque">
-Conclusão e reabertura formam um ciclo controlado. O objetivo é refletir corretamente se a unidade possui ou não trabalho pendente naquele processo.
-</div>
-"""
+                        conteudo='<h2>listarAndamentos e lancarAndamento</h2>\n<p>Os andamentos registram acontecimentos ligados ao processo. Eles ajudam a reconstruir o histórico administrativo.</p>\n<h3>listarAndamentos</h3>\n<p>Permite filtrar andamentos por identificadores, tarefas ou tarefas de módulo. Também pode retornar atributos associados.</p>\n<h3>lancarAndamento</h3>\n<p>Registra um novo andamento a partir de uma tarefa e, quando necessário, atributos. Para atualização textual, existe uma forma específica de registrar a descrição.</p>\n<h3>Como ler o histórico</h3>\n<ul>\n<li>observe a data;</li>\n<li>observe a unidade;</li>\n<li>observe o usuário;</li>\n<li>identifique a ação ou tarefa registrada;</li>\n<li>compare com a etapa atual do processo.</li>\n</ul>\n<div class="destaque"><b>Importante:</b> O histórico é a trilha do processo. Consulte-o antes de repetir ou desfazer uma ação.</div>'
                     ),
                     Aula(
                         id=3,
-                        titulo="Revisão: o ciclo completo do processo",
-                        resumo="Conecte criação, documentos, tramitação, consulta e conclusão em um único fluxo.",
+                        titulo='registrarAnotacao',
+                        resumo='Veja como anotações podem ser associadas a um processo aberto.',
                         ordem=3,
-                        duracao_minutos=4,
-                        conteudo="""
-<h2>Revisão: o ciclo completo do processo</h2>
-
-<p>Agora podemos conectar as principais operações documentadas em uma sequência de trabalho.</p>
-
-<h3>1. Criar</h3>
-<p><code>gerarProcedimento</code> gera o processo a partir da estrutura Procedimento.</p>
-
-<h3>2. Incluir documentos</h3>
-<p><code>incluirDocumento</code> adiciona um Documento a um processo existente.</p>
-
-<h3>3. Consultar</h3>
-<p><code>consultarProcedimento</code> retorna informações do processo. <code>consultarDocumento</code> retorna informações de um documento.</p>
-
-<h3>4. Acompanhar</h3>
-<p><code>listarAndamentos</code> permite consultar registros de andamento.</p>
-
-<h3>5. Tramitar</h3>
-<p><code>enviarProcesso</code> encaminha o processo para uma ou mais unidades de destino.</p>
-
-<h3>6. Organizar responsabilidades</h3>
-<p><code>atribuirProcesso</code> associa o processo a um usuário. <code>anexarProcesso</code> estabelece anexação entre processos.</p>
-
-<h3>7. Concluir</h3>
-<p><code>concluirProcesso</code> encerra a atuação da unidade.</p>
-
-<h3>8. Retomar quando necessário</h3>
-<p><code>reabrirProcesso</code> permite que a unidade volte a atuar.</p>
-
-<h3>Mapa resumido</h3>
-
-<p><b>gerarProcedimento → incluirDocumento → consultarProcedimento → enviarProcesso → listarAndamentos → concluirProcesso → reabrirProcesso</b></p>
-
-<div class="destaque">
-<b>Objetivo da formação:</b> o servidor não precisa decorar nomes técnicos para trabalhar na interface, mas entender esses nomes ajuda a enxergar a lógica real do SEI e facilita a futura criação do simulador.
-</div>
-
-<h3>Próxima etapa do SEI Guia</h3>
-
-<p>O próximo módulo do aplicativo poderá transformar esse conhecimento em prática visual: o usuário receberá uma tarefa e deverá executar o fluxo em uma interface simulada antes de trabalhar no ambiente real.</p>
-"""
-                    ),
+                        conteudo='<h2>registrarAnotacao</h2>\n<p>A função <code>registrarAnotacao</code> registra anotações em um processo que esteja aberto na unidade.</p>\n<h3>Dados utilizados</h3>\n<p>A função recebe a unidade e um conjunto de estruturas de anotação.</p>\n<h3>Estrutura Anotacao</h3>\n<p>A anotação possui o número do processo, uma descrição e um indicador que pode marcar a anotação como prioritária.</p>\n<h3>Quando usar</h3>\n<p>Anotações podem ajudar a registrar lembretes ou informações de apoio para a unidade, mas não devem substituir documentos formais quando o fluxo exige registro documental.</p>\n<h3>Texto objetivo</h3>\n<p>Uma boa anotação deve ser curta, compreensível e ligada ao trabalho que está sendo realizado.</p>\n<div class="destaque"><b>Importante:</b> Use anotação para apoio operacional, não para esconder decisões que deveriam estar documentadas formalmente.</div>'
+                    )
                 ]
             ),
+            Curso(
+                id=7,
+                titulo='7. Organização e controle',
+                descricao='Use marcadores, prazos e relações para organizar o fluxo de trabalho.',
+                nivel='Organização',
+                aulas=[
+                    Aula(
+                        id=1,
+                        titulo='definirMarcador e listarMarcadoresUnidade',
+                        resumo='Organize processos com marcadores disponíveis na unidade.',
+                        ordem=1,
+                        conteudo='<h2>definirMarcador e listarMarcadoresUnidade</h2>\n<p>Marcadores ajudam a organizar processos dentro da unidade.</p>\n<h3>listarMarcadoresUnidade</h3>\n<p>Retorna os marcadores disponíveis na unidade. Cada marcador possui identificador, nome, ícone e estado ativo.</p>\n<h3>definirMarcador</h3>\n<p>Recebe um conjunto de definições que relaciona processo, marcador e texto associado.</p>\n<h3>Uso prático</h3>\n<p>Marcadores podem representar categorias operacionais internas, prioridades de acompanhamento ou outras formas de organização definidas pela unidade.</p>\n<h3>Cuidados</h3>\n<p>O marcador não muda o tipo do processo nem substitui a classificação oficial. Ele é um recurso de organização.</p>\n<div class="destaque"><b>Importante:</b> Padronize o uso de marcadores para que todos na unidade interpretem os mesmos sinais da mesma forma.</div>'
+                    ),
+                    Aula(
+                        id=2,
+                        titulo='definirControlePrazo',
+                        resumo='Veja como um processo aberto pode receber um controle de prazo.',
+                        ordem=2,
+                        conteudo='<h2>definirControlePrazo</h2>\n<p>A função <code>definirControlePrazo</code> recebe um conjunto de definições de prazo para processos abertos na unidade.</p>\n<h3>Formas de prazo</h3>\n<p>A definição pode usar uma data específica ou uma quantidade de dias. Quando são usados dias, também pode ser indicado se devem ser considerados dias úteis.</p>\n<h3>Regra importante</h3>\n<p>Não se deve informar simultaneamente uma data de prazo e uma definição por dias.</p>\n<h3>Uso no fluxo</h3>\n<p>O controle de prazo deve refletir uma obrigação, limite ou necessidade operacional real.</p>\n<h3>Diferença para retorno programado</h3>\n<p>Retorno programado acompanha a expectativa de retorno após uma tramitação. Controle de prazo é um mecanismo de organização de prazo na unidade.</p>\n<div class="destaque"><b>Importante:</b> Escolha uma única forma de representar o prazo e mantenha a regra compreensível para a equipe.</div>'
+                    ),
+                    Aula(
+                        id=3,
+                        titulo='Relacionar, anexar e desanexar processos',
+                        resumo='Entenda as diferenças entre relações processuais.',
+                        ordem=3,
+                        conteudo='<h2>Relacionar, anexar e desanexar processos</h2>\n<p>O SEI possui operações diferentes para organizar relações entre processos. Elas não devem ser confundidas.</p>\n<h3>anexarProcesso</h3>\n<p>Trabalha com um processo principal e um processo anexado. A anexação cria uma relação específica entre eles.</p>\n<h3>desanexarProcesso</h3>\n<p>Remove uma anexação e exige um motivo para a desanexação.</p>\n<h3>Processos relacionados</h3>\n<p>Processos também podem ser relacionados, inclusive durante a geração de um novo procedimento. Relação e anexação não representam necessariamente o mesmo vínculo.</p>\n<h3>Boa prática</h3>\n<p>Antes de anexar ou desanexar, confirme o procedimento administrativo aplicável e registre o motivo quando a operação exigir.</p>\n<div class="destaque"><b>Importante:</b> Use cada tipo de relação com intenção clara. Organização processual não deve ser feita por tentativa e erro.</div>'
+                    )
+                ]
+            ),
+            Curso(
+                id=8,
+                titulo='8. Blocos',
+                descricao='Aprenda a criar, preencher, disponibilizar e concluir blocos.',
+                nivel='Blocos',
+                aulas=[
+                    Aula(
+                        id=1,
+                        titulo='gerarBloco',
+                        resumo='Conheça os tipos de bloco e como eles são criados.',
+                        ordem=1,
+                        conteudo='<h2>gerarBloco</h2>\n<p>A função <code>gerarBloco</code> cria um bloco em uma unidade.</p>\n<h3>Tipos de bloco</h3>\n<ul>\n<li><b>A:</b> Assinatura;</li>\n<li><b>R:</b> Reunião;</li>\n<li><b>I:</b> Interno.</li>\n</ul>\n<h3>Descrição e disponibilização</h3>\n<p>O bloco recebe uma descrição e pode indicar unidades para disponibilização.</p>\n<h3>Documentos</h3>\n<p>É possível informar documentos que serão incluídos no bloco, desde que a operação correspondente esteja autorizada.</p>\n<h3>SinDisponibilizar</h3>\n<p>Permite indicar disponibilização automática, quando o serviço possui permissão para disponibilizar blocos.</p>\n<div class="destaque"><b>Importante:</b> Escolha o tipo do bloco conforme o objetivo: assinatura, reunião ou organização interna.</div>'
+                    ),
+                    Aula(
+                        id=2,
+                        titulo='incluirDocumentoBloco e incluirProcessoBloco',
+                        resumo='Aprenda a colocar documentos e processos em blocos.',
+                        ordem=2,
+                        conteudo='<h2>incluirDocumentoBloco e incluirProcessoBloco</h2>\n<p>Depois que um bloco existe, o SEI possui funções para incluir documentos ou processos nele.</p>\n<h3>incluirDocumentoBloco</h3>\n<p>Utiliza a unidade, o número do bloco, o protocolo do documento e uma anotação opcional.</p>\n<h3>incluirProcessoBloco</h3>\n<p>Utiliza a unidade, o número do bloco, o protocolo do processo e uma anotação opcional.</p>\n<h3>Diferença</h3>\n<p>Uma função trabalha com documento; a outra trabalha com processo. Identifique corretamente o objeto que será colocado no bloco.</p>\n<h3>Anotação</h3>\n<p>O texto opcional pode ajudar a contextualizar o item dentro do bloco.</p>\n<div class="destaque"><b>Importante:</b> Antes de incluir, confira o número do bloco e o protocolo do item.</div>'
+                    ),
+                    Aula(
+                        id=3,
+                        titulo='Disponibilizar, devolver, concluir e reabrir blocos',
+                        resumo='Entenda o ciclo de vida de um bloco.',
+                        ordem=3,
+                        conteudo='<h2>Disponibilizar, devolver, concluir e reabrir blocos</h2>\n<p>Blocos podem passar por diferentes estados ao longo do trabalho.</p>\n<h3>disponibilizarBloco</h3>\n<p>Disponibiliza um bloco gerado para as unidades configuradas.</p>\n<h3>devolverBloco</h3>\n<p>Permite devolver um bloco que foi disponibilizado para uma unidade.</p>\n<h3>concluirBloco</h3>\n<p>Conclui o bloco quando o trabalho correspondente termina.</p>\n<h3>reabrirBloco</h3>\n<p>Reabre um bloco concluído quando o trabalho precisa ser retomado.</p>\n<h3>excluirBloco</h3>\n<p>Existe também uma operação própria de exclusão, diferente de conclusão.</p>\n<div class="destaque"><b>Importante:</b> Conclusão, devolução e exclusão têm significados diferentes. Use a operação correspondente ao estado real do trabalho.</div>'
+                    )
+                ]
+            ),
+            Curso(
+                id=9,
+                titulo='9. Segurança e restrições',
+                descricao='Entenda bloqueios, níveis de acesso e limitações de consulta.',
+                nivel='Segurança',
+                aulas=[
+                    Aula(
+                        id=1,
+                        titulo='bloquearProcesso',
+                        resumo='Veja o que acontece quando um processo é bloqueado.',
+                        ordem=1,
+                        conteudo='<h2>bloquearProcesso</h2>\n<p>A função <code>bloquearProcesso</code> impede diversas alterações enquanto o bloqueio estiver ativo.</p>\n<h3>Operações impedidas</h3>\n<p>Entre as ações que ficam bloqueadas estão alterações de cadastro, inclusão de documentos, alteração de conteúdo, envio de processo, envio de e-mail, agendamento de publicação, assinatura, movimentação e exclusões.</p>\n<h3>Operações ainda possíveis</h3>\n<p>Algumas operações podem continuar permitidas, como atribuição, atualização de andamento, anotação, conclusão e reabertura, conforme as regras do processo.</p>\n<h3>Processos sigilosos</h3>\n<p>Processos sigilosos não podem ser bloqueados por essa operação.</p>\n<h3>Uso consciente</h3>\n<p>Bloquear deve ser uma decisão operacional clara, pois muda significativamente o que pode ser feito com o processo.</p>\n<div class="destaque"><b>Importante:</b> Bloqueio é um estado forte. Antes de aplicá-lo, entenda quais operações deixarão de funcionar.</div>'
+                    ),
+                    Aula(
+                        id=2,
+                        titulo='desbloquearProcesso',
+                        resumo='Aprenda como remover o bloqueio e retomar operações.',
+                        ordem=2,
+                        conteudo='<h2>desbloquearProcesso</h2>\n<p>A função <code>desbloquearProcesso</code> remove o bloqueio de um processo aberto na unidade.</p>\n<h3>Dados necessários</h3>\n<p>São utilizados a unidade e o protocolo do processo.</p>\n<h3>Depois do desbloqueio</h3>\n<p>As operações que estavam impedidas pelo bloqueio podem voltar a ser executadas, desde que as demais permissões e condições também estejam atendidas.</p>\n<h3>Conferência</h3>\n<p>Antes de desbloquear, confirme o motivo original do bloqueio e se a condição que levou a ele já foi resolvida.</p>\n<div class="destaque"><b>Importante:</b> Desbloquear não ignora outras regras de acesso ou permissão do SEI.</div>'
+                    ),
+                    Aula(
+                        id=3,
+                        titulo='Níveis de acesso e hipótese legal',
+                        resumo='Entenda público, restrito, sigiloso e a relação com hipótese legal.',
+                        ordem=3,
+                        conteudo='<h2>Níveis de acesso e hipótese legal</h2>\n<p>Processos e documentos podem possuir níveis de acesso diferentes.</p>\n<h3>Nível 0</h3>\n<p><b>Público:</b> conteúdo sem restrição específica definida pelo nível.</p>\n<h3>Nível 1</h3>\n<p><b>Restrito:</b> acesso limitado e associado às regras aplicáveis.</p>\n<h3>Nível 2</h3>\n<p><b>Sigiloso:</b> possui tratamento de acesso mais rigoroso.</p>\n<h3>listarHipotesesLegais</h3>\n<p>O SEI possui operação para listar hipóteses legais, inclusive com filtro por nível restrito ou sigiloso.</p>\n<h3>Impacto nas consultas</h3>\n<p>Consultas de procedimento e documento possuem limitações para conteúdo sigiloso. Por isso, a ausência de um item em uma consulta pode estar ligada às regras de acesso.</p>\n<div class="destaque"><b>Importante:</b> Classificação de acesso deve seguir a regra institucional, não uma escolha pessoal do usuário.</div>'
+                    )
+                ]
+            ),
+            Curso(
+                id=10,
+                titulo='10. Finalização e funções complementares',
+                descricao='Conclua a formação com fechamento, comunicação, publicação e revisão.',
+                nivel='Conclusão',
+                aulas=[
+                    Aula(
+                        id=1,
+                        titulo='concluirProcesso e reabrirProcesso',
+                        resumo='Aprenda a encerrar e retomar a atuação de uma unidade.',
+                        ordem=1,
+                        conteudo='<h2>concluirProcesso e reabrirProcesso</h2>\n<p>Conclusão e reabertura controlam se uma unidade ainda possui trabalho ativo naquele processo.</p>\n<h3>concluirProcesso</h3>\n<p>Utiliza a unidade onde o processo está aberto e o protocolo do processo. Concluir não é excluir.</p>\n<h3>reabrirProcesso</h3>\n<p>Utiliza uma unidade por onde o processo tramitou e o protocolo do processo, permitindo retomar a atuação.</p>\n<h3>Quando concluir</h3>\n<ul>\n<li>não existe ação pendente na unidade;</li>\n<li>os documentos necessários foram tratados;</li>\n<li>a tramitação prevista já ocorreu, quando necessária;</li>\n<li>a etapa administrativa realmente terminou.</li>\n</ul>\n<h3>Quando reabrir</h3>\n<p>Quando uma nova necessidade exige que a unidade volte a atuar sobre um processo anteriormente concluído.</p>\n<div class="destaque"><b>Importante:</b> Conclusão representa estado de trabalho. Ela não apaga o histórico.</div>'
+                    ),
+                    Aula(
+                        id=2,
+                        titulo='enviarEmail',
+                        resumo='Conheça os dados usados para enviar e-mail associado a um processo.',
+                        ordem=2,
+                        conteudo='<h2>enviarEmail</h2>\n<p>O SEI possui uma operação para enviar e-mail relacionado a um processo.</p>\n<h3>Campos principais</h3>\n<ul>\n<li>processo;</li>\n<li>endereço do remetente;</li>\n<li>destinatários;</li>\n<li>cópia oculta;</li>\n<li>assunto;</li>\n<li>mensagem;</li>\n<li>documentos do processo que serão anexados;</li>\n<li>nível de acesso e hipótese legal quando aplicável.</li>\n</ul>\n<h3>Uso responsável</h3>\n<p>O envio de e-mail deve estar ligado ao procedimento administrativo. Documentos anexados precisam ser conferidos antes do envio.</p>\n<h3>Nível de acesso</h3>\n<p>O envio também considera nível de acesso, reforçando que comunicação externa e segurança documental precisam caminhar juntas.</p>\n<div class="destaque"><b>Importante:</b> Confira destinatários e anexos antes de enviar. E-mail enviado para o endereço errado costuma viajar mais rápido que a explicação do erro.</div>'
+                    ),
+                    Aula(
+                        id=3,
+                        titulo='Publicação de documentos',
+                        resumo='Veja as operações de agendamento, alteração e cancelamento de publicação.',
+                        ordem=3,
+                        conteudo='<h2>Publicação de documentos</h2>\n<p>O SEI possui operações específicas para trabalhar com publicação de documentos.</p>\n<h3>agendarPublicacao</h3>\n<p>Permite informar documento, motivo da publicação, veículo, data de disponibilização, resumo e dados relacionados à Imprensa Nacional quando necessários.</p>\n<h3>Motivos</h3>\n<ul>\n<li>Publicação;</li>\n<li>Retificação;</li>\n<li>Republicação;</li>\n<li>Apostilamento.</li>\n</ul>\n<h3>alterarPublicacao</h3>\n<p>Permite alterar uma publicação já identificada.</p>\n<h3>cancelarAgendamentoPublicacao</h3>\n<p>Cancela um agendamento de publicação usando identificadores da publicação ou do documento.</p>\n<div class="destaque"><b>Importante:</b> Publicação é uma etapa própria. Ela não deve ser confundida com simples inclusão ou envio de documento.</div>'
+                    ),
+                    Aula(
+                        id=4,
+                        titulo='Revisão do ciclo completo',
+                        resumo='Conecte as principais funções em um fluxo de trabalho coerente.',
+                        ordem=4,
+                        conteudo='<h2>Revisão do ciclo completo</h2>\n<p>Depois de estudar as funções separadamente, é importante enxergar o processo como um fluxo contínuo.</p>\n<h3>Início</h3>\n<p><code>listarTiposProcedimento</code> ajuda a identificar os tipos disponíveis e <code>gerarProcedimento</code> cria o processo.</p>\n<h3>Documentos</h3>\n<p><code>listarSeries</code> ajuda a identificar tipos de documento, <code>incluirDocumento</code> adiciona documentos e <code>consultarDocumento</code> recupera seus dados.</p>\n<h3>Tramitação</h3>\n<p><code>enviarProcesso</code> movimenta o processo; <code>atribuirProcesso</code> organiza responsabilidade; retorno programado e controle de prazo ajudam no acompanhamento.</p>\n<h3>Acompanhamento</h3>\n<p><code>consultarProcedimento</code>, <code>listarAndamentos</code>, marcadores e anotações ajudam a compreender e organizar o estado atual.</p>\n<h3>Fechamento</h3>\n<p><code>concluirProcesso</code> encerra a atuação da unidade e <code>reabrirProcesso</code> permite retomá-la quando necessário.</p>\n<div class="destaque"><b>Importante:</b> O objetivo é compreender a lógica por trás das operações para que o uso do SEI seja consistente e previsível.</div>'
+                    )
+                ]
+            )
         ]
-
-    def duracao_total_minutos(self):
-        return sum(curso.duracao_minutos for curso in self.listar_cursos())

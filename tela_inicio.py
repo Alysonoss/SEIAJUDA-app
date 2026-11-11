@@ -63,14 +63,14 @@ class TelaInicio(QWidget):
         linha.addWidget(self._criar_cartao_resumo(
             "Módulos",
             str(len(self.servico_cursos.listar_cursos())),
-            "Formação dividida por assunto"
+            "Conteúdo organizado por assunto"
         ))
 
         total_aulas = sum(len(curso.aulas) for curso in self.servico_cursos.listar_cursos())
         linha.addWidget(self._criar_cartao_resumo(
-            "Duração completa",
-            f"{self.servico_cursos.duracao_total_minutos()} min",
-            "Aproximadamente 1 hora de formação"
+            "Aulas disponíveis",
+            str(total_aulas),
+            "Conteúdo dividido em etapas curtas"
         ))
 
         linha.addWidget(self._criar_cartao_resumo(
