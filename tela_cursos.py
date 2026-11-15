@@ -123,7 +123,7 @@ class TelaCursos(QWidget):
         self.lista_cursos.clear()
         for curso in self.cursos:
             concluido = self.servico_progresso.quantidade_concluida(curso.id)
-            texto = f"{curso.titulo}\n{concluido}/{len(curso.aulas)} aulas • {curso.duracao_minutos} min"
+            texto = f"{curso.titulo}\n{concluido}/{len(curso.aulas)} aulas"
             item = QListWidgetItem(texto)
             item.setData(Qt.UserRole, curso.id)
             self.lista_cursos.addItem(item)
