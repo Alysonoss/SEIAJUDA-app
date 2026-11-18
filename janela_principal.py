@@ -9,6 +9,7 @@ from servicos.servico_progresso import ServicoProgresso
 from telas.tela_inicio import TelaInicio
 from telas.tela_cursos import TelaCursos
 from telas.tela_em_desenvolvimento import TelaEmDesenvolvimento
+from telas.tela_ajuda import TelaAjuda
 
 
 class JanelaPrincipal(QMainWindow):
@@ -120,10 +121,7 @@ class JanelaPrincipal(QMainWindow):
             "Progresso",
             "Aqui serão exibidas estatísticas de cursos, aulas, avaliações e competências."
         ))
-        self.paginas.addWidget(TelaEmDesenvolvimento(
-            "Ajuda",
-            "Esta área reunirá orientações sobre o uso do próprio SEI Guia."
-        ))
+        self.paginas.addWidget(TelaAjuda())
 
         raiz.addWidget(menu)
         raiz.addWidget(self.paginas, 1)

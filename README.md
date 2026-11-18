@@ -1,6 +1,6 @@
-# SEI Guia - Aplicativo de treinamento
+# SEI Guia - versão detalhada
 
-Aplicativo desktop em Python para capacitação de usuários do SEI.
+Aplicativo desktop em Python para capacitação e estudo do SEI.
 
 ## Tecnologias
 
@@ -8,75 +8,48 @@ Aplicativo desktop em Python para capacitação de usuários do SEI.
 - PySide6
 - SQLite
 
-## Conteúdo atual
+## Conteúdo desta versão
 
-A área Cursos foi ampliada para 10 módulos com 31 aulas, cobrindo conceitos e funções do SEI:
+A área de Cursos foi reorganizada seguindo as etapas técnicas do conteúdo de referência fornecido para o projeto.
 
-1. Fundamentos e estrutura do SEI
-2. Criação de processos
-3. Documentos no processo
-4. Arquivos e documentos externos
-5. Tramitação e responsabilidade
-6. Consulta, histórico e anotações
-7. Organização e controle
-8. Blocos
-9. Segurança e restrições
-10. Finalização e funções complementares
+- 11 módulos
+- 80 aulas
+- configuração de sistemas, serviços, autenticação e operações
+- estruturas de dados do SEI
+- parâmetros de entrada e saída das operações
+- observações e restrições de cada função
+- imagens de referência associadas às etapas
+- progresso salvo automaticamente no SQLite
 
-## Funções estudadas
+## Organização
 
-Entre as funções apresentadas estão:
+1. Configuração e acesso aos serviços
+2. Estruturas de dados - fundamentos
+3. Estruturas de dados - documentos e processos
+4. Estruturas de dados - retornos e tipos
+5. Serviços - arquivos, publicação e processos
+6. Serviços - cancelamentos, conclusões e blocos
+7. Serviços - consultas e controles
+8. Serviços - blocos, comunicação, envio e geração
+9. Serviços - inclusão, andamentos e listagens
+10. Serviços - listagens e tipos
+11. Serviços - unidades, reabertura e relacionamentos
 
-- gerarProcedimento
-- listarTiposProcedimento
-- listarUnidades
-- listarUsuarios
-- incluirDocumento
-- consultarDocumento
-- listarSeries
-- adicionarArquivo
-- adicionarConteudoArquivo
-- enviarProcesso
-- atribuirProcesso
-- consultarProcedimento
-- listarAndamentos
-- lancarAndamento
-- registrarAnotacao
-- definirMarcador
-- listarMarcadoresUnidade
-- definirControlePrazo
-- anexarProcesso
-- desanexarProcesso
-- gerarBloco
-- incluirDocumentoBloco
-- incluirProcessoBloco
-- disponibilizarBloco
-- devolverBloco
-- concluirBloco
-- reabrirBloco
-- bloquearProcesso
-- desbloquearProcesso
-- concluirProcesso
-- reabrirProcesso
-- enviarEmail
-- agendarPublicacao
-- alterarPublicacao
-- cancelarAgendamentoPublicacao
+## Imagens
 
-## Ajuda
+As imagens usadas nas aulas ficam na pasta:
 
-A aba Ajuda contém orientações simples sobre:
+```text
+recursos/paginas/
+```
 
-- como iniciar um curso;
-- como acompanhar o progresso;
-- o que fazer quando houver dúvida;
-- a diferença entre o ambiente de aprendizagem e o SEI institucional.
+Elas são carregadas automaticamente pelo aplicativo e aparecem dentro da aula correspondente.
 
 ## Como executar
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 python main.py
 ```
 
-No Windows, também é possível utilizar `executar.bat`.
+No Windows também pode ser usado o arquivo `executar.bat`.
