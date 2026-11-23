@@ -30,3 +30,36 @@ class ServicoBanco:
                     valor TEXT
                 )
             """)
+
+            conexao.execute("""
+                CREATE TABLE IF NOT EXISTS resultados_avaliacao (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    acertos INTEGER NOT NULL,
+                    total INTEGER NOT NULL,
+                    percentual INTEGER NOT NULL,
+                    respostas_json TEXT,
+                    criado_em TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+
+            conexao.execute("""
+                CREATE TABLE IF NOT EXISTS feedback_plataforma (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    clareza INTEGER NOT NULL,
+                    navegacao INTEGER NOT NULL,
+                    utilidade INTEGER NOT NULL,
+                    confianca INTEGER NOT NULL,
+                    imagens INTEGER NOT NULL,
+                    comentario TEXT,
+                    criado_em TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+
+            conexao.execute("""
+                CREATE TABLE IF NOT EXISTS eventos_uso (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    evento TEXT NOT NULL,
+                    detalhe TEXT,
+                    criado_em TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
