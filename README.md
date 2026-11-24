@@ -1,55 +1,31 @@
-# SEI Guia - versão detalhada
+# SEI Guia - Cursos detalhados, imagens HD e avaliações
 
-Aplicativo desktop em Python para capacitação e estudo do SEI.
+Aplicativo desktop em Python + PySide6 para capacitação sobre estruturas, operações e fluxos do SEI.
 
-## Tecnologias
+## Alterações desta versão
 
-- Python 3.11+
-- PySide6
-- SQLite
+- Imagens exibidas somente em aulas onde ajudam a compreender telas, tabelas ou operações importantes.
+- Imagens refeitas a partir do PDF em alta resolução (220 DPI).
+- Aba Avaliação funcional com:
+  - questionário de conhecimento;
+  - histórico de tentativas e melhor resultado;
+  - avaliação da experiência de uso da plataforma;
+  - armazenamento local dos resultados.
+- Registro local de eventos de uso (abertura de páginas, aulas e conclusões) para apoiar análises futuras.
+- Tela Início reformulada com progresso, próxima aula, melhor avaliação e atalhos rápidos.
+- Tela Ajuda ampliada com guia rápido, dúvidas frequentes e solução de problemas comuns.
 
-## Conteúdo desta versão
+## Dados locais
 
-A área de Cursos foi reorganizada seguindo as etapas técnicas do conteúdo de referência fornecido para o projeto.
+O progresso, resultados, feedbacks e eventos de uso ficam em:
 
-- 11 módulos
-- 80 aulas
-- configuração de sistemas, serviços, autenticação e operações
-- estruturas de dados do SEI
-- parâmetros de entrada e saída das operações
-- observações e restrições de cada função
-- imagens de referência associadas às etapas
-- progresso salvo automaticamente no SQLite
+`dados/sei_guia.db`
 
-## Organização
-
-1. Configuração e acesso aos serviços
-2. Estruturas de dados - fundamentos
-3. Estruturas de dados - documentos e processos
-4. Estruturas de dados - retornos e tipos
-5. Serviços - arquivos, publicação e processos
-6. Serviços - cancelamentos, conclusões e blocos
-7. Serviços - consultas e controles
-8. Serviços - blocos, comunicação, envio e geração
-9. Serviços - inclusão, andamentos e listagens
-10. Serviços - listagens e tipos
-11. Serviços - unidades, reabertura e relacionamentos
-
-## Imagens
-
-As imagens usadas nas aulas ficam na pasta:
-
-```text
-recursos/paginas/
-```
-
-Elas são carregadas automaticamente pelo aplicativo e aparecem dentro da aula correspondente.
-
-## Como executar
+## Executar
 
 ```bash
 python -m pip install -r requirements.txt
 python main.py
 ```
 
-No Windows também pode ser usado o arquivo `executar.bat`.
+No Windows também é possível utilizar `executar.bat`.

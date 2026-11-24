@@ -10,10 +10,11 @@ from PySide6.QtCore import Qt
 
 
 class TelaCursos(QWidget):
-    def __init__(self, servico_cursos, servico_progresso, ao_alterar_progresso=None):
+    def __init__(self, servico_cursos, servico_progresso, servico_avaliacao=None, ao_alterar_progresso=None):
         super().__init__()
         self.servico_cursos = servico_cursos
         self.servico_progresso = servico_progresso
+        self.servico_avaliacao = servico_avaliacao
         self.ao_alterar_progresso = ao_alterar_progresso
 
         self.cursos = self.servico_cursos.listar_cursos()
@@ -175,6 +176,9 @@ class TelaCursos(QWidget):
 
         self.aula_atual = self.curso_atual.aulas[indice]
 
+        if self.servico_avaliacao:
+            self.servico_avaliacao.registrar_evento("abrir_aula", f"{self.curso_atual.id}:{self.aula_atual.id}")
+
         self.titulo_aula.setText(self.aula_atual.titulo)
         self.resumo_aula.setText(self.aula_atual.resumo)
 
@@ -194,7 +198,7 @@ class TelaCursos(QWidget):
             return (
                 '<div class="imagem-ref">'
                 '<p><b>Referência visual desta etapa</b></p>'
-                f'<img src="{endereco}" width="650">'
+                f'<img src="{endereco}" width="720">'
                 '</div>'
             )
 
@@ -324,6 +328,10 @@ class TelaCursos(QWidget):
 
         if self.ao_alterar_progresso:
             self.ao_alterar_progresso()
+
+        if self.servico_avaliacao:
+            evento = "concluir_aula" if nova_situacao else "reabrir_aula"
+            self.servico_avaliacao.registrar_evento(evento, f"{self.curso_atual.id}:{self.aula_atual.id}")
 
         if nova_situacao and concluido == len(self.curso_atual.aulas):
             QMessageBox.information(
